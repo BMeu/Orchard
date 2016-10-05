@@ -9,6 +9,8 @@
     for usage information.
 """
 
+import sys
+
 import click
 
 click_context = dict(help_option_names = ['-h', '--help'])
@@ -20,6 +22,26 @@ def main():
         Manage Orchard from the command line.
     """
     pass
+
+
+@main.command()
+def lint():
+    """
+        Run a linter against the source code.
+    """
+    print('RUNNING LINTER.\n')
+
+    import subprocess
+
+    linter = subprocess.call(['flake8', '--ignore=E251', '--max-line-length=100',
+                              '--count', 'orchard.py', 'orchard/', 'tests/'])
+
+    if linter:
+        print('\nFAILED')
+    else:
+        print('\nOK')
+
+    sys.exit(1 if linter else 0)
 
 
 @main.command()
