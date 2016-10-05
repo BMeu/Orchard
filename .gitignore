@@ -1,0 +1,25 @@
+# Babel.
+*.mo
+
+# Build folder.
+build/*
+!/build/.gitkeep
+
+# Coverage.
+.coverage
+
+# Instance folder.
+instance/*.py
+instance/*/*
+!/instance/*_example.py
+!/instance/__init__.py
+!/instance/*/.gitkeep
+
+# PyCharm.
+.idea
+
+# Python.
+*.pyc
+
+# Virtual environment.
+venv
