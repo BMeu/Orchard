@@ -55,24 +55,20 @@ def run(mode):
     """
         Run the server in debug mode.
     """
+    host = '127.0.0.1'
+    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Development'
+    if mode == 'production':
+        host = '0.0.0.0'
+        os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Production'
+
     from orchard import app
 
-    # Wit profiler.
     if mode == 'profile':
         from werkzeug.contrib.profiler import ProfilerMiddleware
         app.config['PROFILE'] = True
         app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions = [30])
-        app.run(debug = True)
-        return
 
-    # Without profiler.
-    host = '127.0.0.1'
-    debug = True
-    if mode == 'production':
-        host = '0.0.0.0'
-        debug = False
-
-    app.run(host = host, debug = debug)
+    app.run(host = host)
 
 
 @main.command()
@@ -117,8 +113,8 @@ def test(module, full_coverage):
     coverage_engine.start()
 
     # Import the app and initialize it for testing.
+    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Testing'
     from orchard import app
-    app.testing = True
 
     # Run the tests.
     tests = unittest.TestLoader().discover(start_directory, test_file)
@@ -126,12 +122,12 @@ def test(module, full_coverage):
     test_result = test_runner.run(tests).wasSuccessful()
 
     # Create a fresh build directory if necessarry.
-    build_directory = os.path.join(basedir, 'build/coverage')
+    build_directory = os.path.join(app.config['BUILD_PATH'], 'coverage')
     if os.path.isdir(build_directory):
         shutil.rmtree(build_directory)
 
     # Stop the coverage engine and save the report.
-    title = '{0} Coverage Report'.format('ORCHARD')
+    title = '{project_name} Coverage Report'.format(project_name = app.config['PROJECT_NAME'])
     coverage_engine.stop()
     coverage_engine.save()
     coverage_result = coverage_engine.html_report(directory = build_directory, title = title)

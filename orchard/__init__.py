@@ -4,15 +4,6 @@
     The main package of orchard.
 """
 
-from flask import Flask
-app = Flask(__name__)
+from .app import app
 
-
-@app.route("/")
-def index() -> str:
-    """
-        Display a simple greeting.
-
-        :return: A message to all visitors.
-    """
-    return "Welcome to the Orchard!"
+__all__ = ['app']
