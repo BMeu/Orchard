@@ -7,6 +7,9 @@ python:
   - "3.5-dev"
   - "nightly"
 
+before_install:
+  - cp instance/configuration_example.py instance/configuration.py
+
 install:
   - pip install -r requirements.txt
   - pip install codecov
