@@ -27,4 +27,3 @@ class AppPropertyTest(unittest.TestCase):
         data = response.get_data(as_text = True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(name in data)
-
