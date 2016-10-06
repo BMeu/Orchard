@@ -220,7 +220,7 @@ def test(module: str, full_coverage: bool, test_types: str):
     # Determine which modules to test.
     start_directory = './tests/{test_type}'
     coverage_file = ['*/*.py']
-    test_file = '*_test.py'
+    test_file = '*_{test_type}_test.py'
     if module:
         modules = module.split('.')
 
@@ -234,7 +234,7 @@ def test(module: str, full_coverage: bool, test_types: str):
                 modules[-1] = modules[-2]
             except IndexError:
                 modules[-1] = 'orchard'
-        test_file = '{0}_test.py'.format(modules.pop())
+        test_file = '{module}_{{test_type}}_test.py'.format(module = modules.pop())
         start_directory = './tests/{{test_type}}/{module}'.format(module = '/'.join(modules))
 
     # Start recording the code coverage.
@@ -256,7 +256,7 @@ def test(module: str, full_coverage: bool, test_types: str):
         print('Running {test_type} tests.'.format(test_type = test_type).upper())
         directory = start_directory.format(test_type = test_type)
 
-        tests = unittest.TestLoader().discover(directory, test_file)
+        tests = unittest.TestLoader().discover(directory, test_file.format(test_type = test_type))
         test_runner = unittest.TextTestRunner(verbosity = 2)
         test_result = test_runner.run(tests).wasSuccessful()
 

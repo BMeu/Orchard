@@ -8,8 +8,9 @@ python:
   - "nightly"
 
 env:
-  - TEST_TYPE=property
-  - TEST_TYPE=unit
+  - TEST_TYPE=
+  - TEST_TYPE='-t property'
+  - TEST_TYPE='-t unit'
 
 before_install:
   - cp instance/configuration_example.py instance/configuration.py
@@ -19,7 +20,7 @@ install:
   - pip install codecov
 
 script:
-  - python orchard.py test -t $TEST_TYPE
+  - python orchard.py test $TEST_TYPE
   - python orchard.py lint
 
 after_success:
