@@ -15,6 +15,7 @@ from typing import Any, Dict, List
 
 import click
 
+available_tests = ['property', 'unit']
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 click_context = dict(help_option_names = ['-h', '--help'])
 
@@ -160,7 +161,9 @@ def shell():
 @click.option('-f', '--full-coverage', is_flag = True, default = False,
               help = 'Record coverage statistics for the entire source code, even if only a single '
                      'module is being tested.')
-def test(module: str, full_coverage: bool):
+@click.option('-t', '--test-types', type = click.Choice(available_tests), multiple = True,
+              help = 'Run only the specified types of tests.')
+def test(module: str, full_coverage: bool, test_types: str):
     """
         Execute all tests and report code coverage.
 
@@ -172,7 +175,12 @@ def test(module: str, full_coverage: bool):
     import shutil
     import unittest
 
-    start_directory = './tests'
+    # If no specific tests are requested, run all.
+    if not test_types:
+        test_types = tuple(available_tests)
+
+    # Determine which modules to test.
+    start_directory = './tests/{test_type}'
     coverage_file = ['*/*.py']
     test_file = '*_test.py'
     if module:
@@ -189,7 +197,7 @@ def test(module: str, full_coverage: bool):
             except IndexError:
                 modules[-1] = 'orchard'
         test_file = '{0}_test.py'.format(modules.pop())
-        start_directory = './tests/{0}'.format('/'.join(modules))
+        start_directory = './tests/{{test_type}}/{module}'.format(module = '/'.join(modules))
 
     # Start recording the code coverage.
     coverage_engine = coverage.coverage(branch = True, source = ['./orchard'],
@@ -200,10 +208,19 @@ def test(module: str, full_coverage: bool):
     os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Testing'
     import orchard
 
-    # Run the tests.
-    tests = unittest.TestLoader().discover(start_directory, test_file)
-    test_runner = unittest.TextTestRunner(verbosity = 2)
-    test_result = test_runner.run(tests).wasSuccessful()
+    # Run the specified tests.
+    total_test_result = True
+    for test_type in test_types:
+        print('Running {test_type} tests.'.format(test_type = test_type).upper())
+        directory = start_directory.format(test_type = test_type)
+
+        tests = unittest.TestLoader().discover(directory, test_file)
+        test_runner = unittest.TextTestRunner(verbosity = 2)
+        test_result = test_runner.run(tests).wasSuccessful()
+
+        total_test_result = total_test_result and test_result
+
+        print('\n')
 
     # Create a fresh build directory if necessarry.
     build_directory = os.path.join(orchard.app.config['BUILD_PATH'], 'coverage')

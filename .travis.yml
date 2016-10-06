@@ -7,6 +7,10 @@ python:
   - "3.5-dev"
   - "nightly"
 
+env:
+  - TEST_TYPE=property
+  - TEST_TYPE=unit
+
 before_install:
   - cp instance/configuration_example.py instance/configuration.py
 
@@ -15,7 +19,7 @@ install:
   - pip install codecov
 
 script:
-  - python orchard.py test
+  - python orchard.py test -t $TEST_TYPE
   - python orchard.py lint
 
 after_success:
