@@ -72,6 +72,43 @@ def run(mode):
 
 
 @main.command()
+def shell():
+    """
+        Start a Python shell.
+    """
+    import sys
+    from werkzeug import script
+
+    def create_context():
+        """
+            Create a context for the interactive shell.
+
+            :return: A dictionary of object instances.
+        """
+        os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Production'
+        from flask import g
+        import orchard
+
+        app_context = orchard.app.app_context()
+        app_context.push()
+
+        return dict(app = orchard.app, g = g)
+
+    keys = create_context()
+    banner = ('Python {version} on {platform}\n' +
+              'Type "help", "copyright", "credits" or "license" for more information.\n' +
+              'Type "exit()" to quit the session.\n\n' +
+              'App: {app_name}\n' +
+              'Instance: {instance_path}\n'
+              'Exported objects: {exported_objects}\n')
+    banner = banner.format(version = sys.version, platform = sys.platform,
+                           app_name = keys['app'].name, instance_path = keys['app'].instance_path,
+                           exported_objects = ', '.join(create_context().keys()))
+
+    script.make_shell(create_context, banner = banner)()
+
+
+@main.command()
 @click.argument('module', required = False)
 @click.option('-f', '--full-coverage', is_flag = True, default = False,
               help = 'Record coverage statistics for the entire source code, even if only a single '
