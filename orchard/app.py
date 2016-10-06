@@ -15,7 +15,7 @@ app = Flask(__name__, instance_relative_config = True)
 
 # Load the configuration from the environment or exit with an error message.
 configuration = os.environ.get('ORCHARD_CONFIGURATION')
-if configuration is None:
+if configuration is None:  # pragma: no cover.
     import sys
     print('Error: No configuration specified. You did not provide the ORCHARD_CONFIGURATION '
           'environment variable.')

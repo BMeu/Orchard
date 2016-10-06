@@ -11,6 +11,7 @@
 
 import os
 import sys
+from typing import Any, Dict
 
 import click
 
@@ -31,9 +32,9 @@ def lint():
     """
         Run a linter against the source code.
     """
-    print('RUNNING LINTER.\n')
-
     import subprocess
+
+    print('RUNNING LINTER.\n')
 
     linter = subprocess.call(['flake8', '--ignore=E251', '--max-line-length=100',
                               '--count', 'orchard.py', 'orchard/', 'tests/'])
@@ -47,28 +48,28 @@ def lint():
 
 
 @main.command()
-@click.option('-p', '--production', 'mode', flag_value = 'production',
+@click.option('-p', '--production', is_flag = True, default = False,
               help = 'Run the server in production mode.')
-@click.option('-a', '--profile', 'mode', flag_value = 'profile',
+@click.option('-a', '--profile', is_flag = True, default = False,
               help = 'Analyze the code execution using a profiler.')
-def run(mode):
+def run(production: bool = False, profile: bool = False):
     """
         Run the server in debug mode.
     """
     host = '127.0.0.1'
     os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Development'
-    if mode == 'production':
+    if production:
         host = '0.0.0.0'
         os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Production'
 
-    from orchard import app
+    import orchard
 
-    if mode == 'profile':
+    if profile:
         from werkzeug.contrib.profiler import ProfilerMiddleware
-        app.config['PROFILE'] = True
-        app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions = [30])
+        orchard.app.config['PROFILE'] = True
+        orchard.app.wsgi_app = ProfilerMiddleware(orchard.app.wsgi_app, restrictions = [30])
 
-    app.run(host = host)
+    orchard.app.run(host = host)
 
 
 @main.command()
@@ -77,22 +78,22 @@ def shell():
         Start a Python shell.
     """
     import sys
-    from werkzeug import script
+    import werkzeug.script
 
-    def create_context():
+    def create_context() -> Dict[str, Any]:
         """
             Create a context for the interactive shell.
 
             :return: A dictionary of object instances.
         """
         os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Production'
-        from flask import g
+        import flask
         import orchard
 
         app_context = orchard.app.app_context()
         app_context.push()
 
-        return dict(app = orchard.app, g = g)
+        return dict(app = orchard.app, g = flask.g)
 
     keys = create_context()
     banner = ('Python {version} on {platform}\n' +
@@ -105,7 +106,7 @@ def shell():
                            app_name = keys['app'].name, instance_path = keys['app'].instance_path,
                            exported_objects = ', '.join(create_context().keys()))
 
-    script.make_shell(create_context, banner = banner)()
+    werkzeug.script.make_shell(create_context, banner = banner)()
 
 
 @main.command()
@@ -113,7 +114,7 @@ def shell():
 @click.option('-f', '--full-coverage', is_flag = True, default = False,
               help = 'Record coverage statistics for the entire source code, even if only a single '
                      'module is being tested.')
-def test(module, full_coverage):
+def test(module: str, full_coverage: bool):
     """
         Execute all tests and report code coverage.
 
@@ -151,7 +152,7 @@ def test(module, full_coverage):
 
     # Import the app and initialize it for testing.
     os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Testing'
-    from orchard import app
+    import orchard
 
     # Run the tests.
     tests = unittest.TestLoader().discover(start_directory, test_file)
@@ -159,12 +160,12 @@ def test(module, full_coverage):
     test_result = test_runner.run(tests).wasSuccessful()
 
     # Create a fresh build directory if necessarry.
-    build_directory = os.path.join(app.config['BUILD_PATH'], 'coverage')
+    build_directory = os.path.join(orchard.app.config['BUILD_PATH'], 'coverage')
     if os.path.isdir(build_directory):
         shutil.rmtree(build_directory)
 
     # Stop the coverage engine and save the report.
-    title = '{project_name} Coverage Report'.format(project_name = app.config['PROJECT_NAME'])
+    title = '{name} Coverage Report'.format(name = orchard.app.config['PROJECT_NAME'])
     coverage_engine.stop()
     coverage_engine.save()
     coverage_result = coverage_engine.html_report(directory = build_directory, title = title)
