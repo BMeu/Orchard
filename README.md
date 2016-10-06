@@ -4,7 +4,6 @@
 [![codecov](https://codecov.io/gh/BMeu/Orchard/branch/master/graph/badge.svg)](https://codecov.io/gh/BMeu/Orchard)
 [![Documentation Status](https://readthedocs.org/projects/orchard/badge/?version=master)](http://orchard.readthedocs.io/en/master/?badge=master)
 
-[![Open Issues](https://badge.waffle.io/BMeu/Orchard.svg?label=backlog&title=Open%20Issues)](http://waffle.io/BMeu/Orchard)
 [![Upcoming Issues](https://badge.waffle.io/BMeu/Orchard.svg?label=upcoming&title=Upcoming%20Issues)](http://waffle.io/BMeu/Orchard)
 [![Issues in Progress](https://badge.waffle.io/BMeu/Orchard.svg?label=in%20progress&title=Issues%20in%20Progress)](http://waffle.io/BMeu/Orchard)
 
