@@ -4,7 +4,7 @@ Orchard is a web application designed for a Raspberry Pi server to monitor its s
 
 [![Build Status](https://travis-ci.org/BMeu/Orchard.svg?branch=master)](https://travis-ci.org/BMeu/Orchard)
 [![codecov](https://codecov.io/gh/BMeu/Orchard/branch/master/graph/badge.svg)](https://codecov.io/gh/BMeu/Orchard)
-[![Documentation Status](https://readthedocs.org/projects/orchard/badge/?version=latest)](http://orchard.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/orchard/badge/?version=master)](http://orchard.readthedocs.io/en/master/?badge=master)
 
 ## Documentation
 The full documentation is available at [Read the Docs](https://orchard.readthedocs.io).
