@@ -12,6 +12,35 @@ from orchard.configuration import basedir
 class Default:
     """
         Default configuration values that are valid for all operation modes.
+
+        .. attribute:: BUILD_PATH
+           :annotation: = /path/to/your/build/directory
+
+           Used for coverage reports and documentation builds.
+
+           :type: str
+
+        .. attribute:: HYPOTHESIS_PATH
+           :annotation: = /path/to/your/hypothesis/directory
+
+           Used by Hypothesis for saving examples of property tests. By default within the
+           :attr:`.INSTANCE_PATH`.
+
+           :type: str
+
+        .. attribute:: INSTANCE_PATH
+           :annotation: = /path/to/your/instance/directory
+
+           Used for instance specific configurations.
+
+           :type: str
+
+        .. attribute:: LOG_PATH
+           :annotation: = /path/to/your/log/directory
+
+           Used for the logs by |projectname|. By default within the :attr:`.INSTANCE_PATH`.
+
+           :type: basestring
     """
 
     # Paths.
@@ -22,3 +51,8 @@ class Default:
 
     # Project name.
     PROJECT_NAME = 'Orchard'
+    """
+        The name of the application.
+
+        :type: str
+    """

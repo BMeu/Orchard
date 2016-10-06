@@ -13,4 +13,9 @@ class Configuration:
         You can overwrite any of the values from :mod:`orchard.configuration` in this class.
     """
 
-    SECRET_KEY = ''
+    SECRET_KEY = 'Absolutely random and very long.'
+    """
+        A long, random, and secret string used to secure sessions.
+
+        :type: str
+    """

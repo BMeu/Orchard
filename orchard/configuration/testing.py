@@ -13,5 +13,15 @@ class Testing(Default):
     """
 
     TESTING = True
+    """
+        Ensable the testing mode.
+
+        :type: bool
+    """
 
     SERVER_NAME = 'localhost'
+    """
+        The name of the testing server.
+
+        :type: str
+    """

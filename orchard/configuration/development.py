@@ -13,5 +13,15 @@ class Development(Default):
     """
 
     DEBUG = True
+    """
+        Enable the debug mode.
+
+        :type: bool
+    """
 
     TESTING = False
+    """
+        Explicitly disable the testing mode.
+
+        :type: bool
+    """

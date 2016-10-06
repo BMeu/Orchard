@@ -82,6 +82,37 @@ def clean(build: bool = False, hypothesis: bool = False, dry_run: bool = False):
 
 
 @main.command()
+def doc():
+    """
+        Build the documentation.
+    """
+    print('BUILDING DOCUMENTATION\n')
+    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Default'
+
+    import shutil
+    import subprocess
+    import orchard
+
+    # Directories.
+    build_directory = os.path.join(orchard.app.config['BUILD_PATH'], 'docs')
+    source_directory = 'docs'
+
+    # Create a fresh build directory if necessarry.
+    if os.path.isdir(build_directory):
+        shutil.rmtree(build_directory)
+
+    built = subprocess.call(['sphinx-build', '-b', 'html', source_directory,
+                             '{0}/html'.format(build_directory)]) == 0
+
+    if built:
+        print('\nOK')
+    else:
+        print('\nFAILED')
+
+    sys.exit(0 if built else 1)
+
+
+@main.command()
 def lint():
     """
         Run a linter against the source code.

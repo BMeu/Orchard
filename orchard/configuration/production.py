@@ -13,5 +13,15 @@ class Production(Default):
     """
 
     DEBUG = False
+    """
+        Explicitly disable the debug mode.
+
+        :type: bool
+    """
 
     TESTING = False
+    """
+        Explicitly disable the testing mode.
+
+        :type: bool
+    """
