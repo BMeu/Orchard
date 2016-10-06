@@ -3,7 +3,10 @@
 [![Build Status](https://travis-ci.org/BMeu/Orchard.svg?branch=master)](https://travis-ci.org/BMeu/Orchard)
 [![codecov](https://codecov.io/gh/BMeu/Orchard/branch/master/graph/badge.svg)](https://codecov.io/gh/BMeu/Orchard)
 [![Documentation Status](https://readthedocs.org/projects/orchard/badge/?version=master)](http://orchard.readthedocs.io/en/master/?badge=master)
-[![Issues in Progress](https://badge.waffle.io/BMeu/Orchard.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/BMeu/Orchard)
+
+[![Open Issues](https://badge.waffle.io/BMeu/Orchard.svg?label=backlog&title=Open%20Issues)](http://waffle.io/BMeu/Orchard)
+[![Upcoming Issues](https://badge.waffle.io/BMeu/Orchard.svg?label=upcoming&title=Upcoming%20Issues)](http://waffle.io/BMeu/Orchard)
+[![Issues in Progress](https://badge.waffle.io/BMeu/Orchard.svg?label=in%20progress&title=Issues%20in%20Progress)](http://waffle.io/BMeu/Orchard)
 
 Orchard is a web application designed for a Raspberry Pi server to monitor its status.
 
