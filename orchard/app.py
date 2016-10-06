@@ -27,10 +27,16 @@ app.config.from_object('instance.Configuration')
 
 
 @app.route("/")
-def index() -> str:
+@app.route("/<string:name>")
+def index(name: str = None) -> str:
     """
         Display a simple greeting.
 
+        :param name: The name of the visitor.
         :return: A message to all visitors.
     """
-    return "Welcome to the Orchard!"
+    greeting = 'Welcome to the Orchard!'
+    if name is not None:
+        greeting = 'Welcome to the Orchard, {name}!'.format(name = name)
+
+    return greeting

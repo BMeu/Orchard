@@ -31,10 +31,13 @@ def main():
 @main.command()
 @click.option('-b', '--build', is_flag = True, default = False, prompt = 'Empty the build folder?',
               help = 'Empty the build folder.')
+@click.option('-p', '--hypothesis', is_flag = True, default = False,
+              prompt = 'Empty the property test example database?',
+              help = 'Empty the property test example database.')
 @click.option('-d', '--dry-run', is_flag = True, default = False,
               help = 'Do not actually delete anything, but instead list all files and folders '
                      'that would be deleted.')
-def clean(build: bool = False, dry_run: bool = False):
+def clean(build: bool = False, hypothesis: bool = False, dry_run: bool = False):
     """
         Remove temporary files and folders.
     """
@@ -57,6 +60,10 @@ def clean(build: bool = False, dry_run: bool = False):
     # Empty the build folder.
     if build:
         delete_list.extend(get_deletable_paths_in_directory(orchard.app.config['BUILD_PATH']))
+
+    # Empty the property test example database.
+    if hypothesis:
+        delete_list.extend(get_deletable_paths_in_directory(orchard.app.config['HYPOTHESIS_PATH']))
 
     if dry_run:
         print('\nFILES THAT WOULD BE DELETED:\n')
@@ -208,6 +215,10 @@ def test(module: str, full_coverage: bool, test_types: str):
     os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Testing'
     import orchard
 
+    # Set the directory where Hypothesis saves its files.
+    import hypothesis.configuration
+    hypothesis.configuration.set_hypothesis_home_dir(orchard.app.config['HYPOTHESIS_PATH'])
+
     # Run the specified tests.
     total_test_result = True
     for test_type in test_types:
@@ -237,7 +248,7 @@ def test(module: str, full_coverage: bool, test_types: str):
     print('Coverage report saved to {0}.'.format(os.path.join(basedir, build_directory)))
     coverage_engine.erase()
 
-    sys.exit(0 if test_result else 1)
+    sys.exit(0 if total_test_result else 1)
 
 
 if __name__ == '__main__':

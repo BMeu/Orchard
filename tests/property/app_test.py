@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 
 """
-    Unit Test: orchard.app
+    Property Test: orchard.app
 """
 
+import hypothesis
+import hypothesis.strategies as st
 import unittest
 
 import orchard
 
 
-class AppUnitTest(unittest.TestCase):
+class AppPropertyTest(unittest.TestCase):
 
     def setUp(self):
         self.app_context = orchard.app.app_context()
@@ -19,13 +21,10 @@ class AppUnitTest(unittest.TestCase):
     def tearDown(self):
         self.app_context.pop()
 
-    def test_index(self):
-        response = self.client.get('/')
+    @hypothesis.given(name = st.text(alphabet = ['a', 'b', 'c', 'A', 'B', 'C']))
+    def test_index(self, name):
+        response = self.client.get('/{name}'.format(name = name))
         data = response.get_data(as_text = True)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('Welcome to the Orchard!' in data)
+        self.assertTrue(name in data)
 
-        response = self.client.get('/BMeu')
-        data = response.get_data(as_text = True)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('Welcome to the Orchard, BMeu!' in data)

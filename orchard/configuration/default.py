@@ -17,6 +17,7 @@ class Default:
     # Paths.
     BUILD_PATH = os.path.join(basedir, 'build')
     INSTANCE_PATH = os.path.join(basedir, 'instance')
+    HYPOTHESIS_PATH = os.path.join(INSTANCE_PATH, 'hypothesis')
     LOG_PATH = os.path.join(INSTANCE_PATH, 'log')
 
     # Project name.
