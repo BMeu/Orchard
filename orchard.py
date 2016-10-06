@@ -11,7 +11,7 @@
 
 import os
 import sys
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 import click
 
@@ -25,6 +25,52 @@ def main():
         Manage Orchard from the command line.
     """
     pass
+
+
+@main.command()
+@click.option('-b', '--build', is_flag = True, default = False, prompt = 'Empty the build folder?',
+              help = 'Empty the build folder.')
+@click.option('-d', '--dry-run', is_flag = True, default = False,
+              help = 'Do not actually delete anything, but instead list all files and folders '
+                     'that would be deleted.')
+def clean(build: bool = False, dry_run: bool = False):
+    """
+        Remove temporary files and folders.
+    """
+    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Default'
+
+    import shutil
+    import orchard
+
+    def get_deletable_paths_in_directory(directory: str) -> List[str]:
+        """
+            Get a list of all files and folders in a directory that can savely be deleted.
+
+            :param directory: The directory in which files and folders will be deleted.
+            :return: A list of all files and folders in the directory, except '.gitkeep' files.
+        """
+        return [os.path.join(directory, p) for p in os.listdir(directory) if p != '.gitkeep']
+
+    delete_list = []
+
+    # Empty the build folder.
+    if build:
+        delete_list.extend(get_deletable_paths_in_directory(orchard.app.config['BUILD_PATH']))
+
+    if dry_run:
+        print('\nFILES THAT WOULD BE DELETED:\n')
+    else:
+        print('\nDELETING...\n')
+
+    # Delete the actual files (or at least print the files).
+    for deletable in delete_list:
+        print(deletable)
+
+        if not dry_run:
+            if os.path.isdir(deletable):
+                shutil.rmtree(deletable)
+            else:
+                os.unlink(deletable)
 
 
 @main.command()
