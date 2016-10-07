@@ -31,13 +31,15 @@ def main():
 @main.command()
 @click.option('-b', '--build', is_flag = True, default = False, prompt = 'Empty the build folder?',
               help = 'Empty the build folder.')
+@click.option('-l', '--logs', is_flag = True, default = False, prompt = 'Delete the log files?',
+              help = 'Delete all log files.')
 @click.option('-p', '--hypothesis', is_flag = True, default = False,
               prompt = 'Empty the property test example database?',
               help = 'Empty the property test example database.')
 @click.option('-d', '--dry-run', is_flag = True, default = False,
               help = 'Do not actually delete anything, but instead list all files and folders '
                      'that would be deleted.')
-def clean(build: bool = False, hypothesis: bool = False, dry_run: bool = False):
+def clean(build: bool = False, logs: bool = False, hypothesis: bool = False, dry_run: bool = False):
     """
         Remove temporary files and folders.
     """
@@ -60,6 +62,10 @@ def clean(build: bool = False, hypothesis: bool = False, dry_run: bool = False):
     # Empty the build folder.
     if build:
         delete_list.extend(get_deletable_paths_in_directory(app.config['BUILD_PATH']))
+
+    # Delete the log files.
+    if logs:
+        delete_list.extend(get_deletable_paths_in_directory(app.config['LOG_PATH']))
 
     # Empty the property test example database.
     if hypothesis:
