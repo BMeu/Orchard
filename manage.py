@@ -41,10 +41,10 @@ def clean(build: bool = False, hypothesis: bool = False, dry_run: bool = False):
     """
         Remove temporary files and folders.
     """
-    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Default'
-
     import shutil
     import orchard
+
+    app = orchard.create_app('Development')
 
     def get_deletable_paths_in_directory(directory: str) -> List[str]:
         """
@@ -59,11 +59,11 @@ def clean(build: bool = False, hypothesis: bool = False, dry_run: bool = False):
 
     # Empty the build folder.
     if build:
-        delete_list.extend(get_deletable_paths_in_directory(orchard.app.config['BUILD_PATH']))
+        delete_list.extend(get_deletable_paths_in_directory(app.config['BUILD_PATH']))
 
     # Empty the property test example database.
     if hypothesis:
-        delete_list.extend(get_deletable_paths_in_directory(orchard.app.config['HYPOTHESIS_PATH']))
+        delete_list.extend(get_deletable_paths_in_directory(app.config['HYPOTHESIS_PATH']))
 
     if dry_run:
         print('\nFILES THAT WOULD BE DELETED:\n')
@@ -87,14 +87,15 @@ def doc():
         Build the documentation.
     """
     print('BUILDING DOCUMENTATION\n')
-    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Default'
 
     import shutil
     import subprocess
     import orchard
 
+    app = orchard.create_app('Development')
+
     # Directories.
-    build_directory = os.path.join(orchard.app.config['BUILD_PATH'], 'docs')
+    build_directory = os.path.join(app.config['BUILD_PATH'], 'docs')
     source_directory = 'docs'
 
     # Create a fresh build directory if necessarry.
@@ -142,19 +143,21 @@ def run(production: bool = False, profile: bool = False):
         Run the server in debug mode.
     """
     host = '127.0.0.1'
-    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Development'
+    configuration = 'Development'
     if production:
         host = '0.0.0.0'
-        os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Production'
+        configuration = 'Production'
 
     import orchard
 
+    app = orchard.create_app(configuration)
+
     if profile:
         from werkzeug.contrib.profiler import ProfilerMiddleware
-        orchard.app.config['PROFILE'] = True
-        orchard.app.wsgi_app = ProfilerMiddleware(orchard.app.wsgi_app, restrictions = [30])
+        app.config['PROFILE'] = True
+        app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions = [30])
 
-    orchard.app.run(host = host)
+    app.run(host = host)
 
 
 @main.command()
@@ -171,14 +174,15 @@ def shell():
 
             :return: A dictionary of object instances.
         """
-        os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Production'
         import flask
         import orchard
 
-        app_context = orchard.app.app_context()
+        app = orchard.create_app('Production')
+
+        app_context = app.app_context()
         app_context.push()
 
-        return dict(app = orchard.app, g = flask.g)
+        return dict(app = app, g = flask.g)
 
     keys = create_context()
     banner = ('Python {version} on {platform}\n' +
@@ -239,16 +243,17 @@ def test(module: str, full_coverage: bool, test_types: str):
 
     # Start recording the code coverage.
     coverage_engine = coverage.coverage(branch = True, source = ['./orchard'],
-                                        include = coverage_file, omit = ['./orchard/configuration'])
+                                        include = coverage_file,
+                                        omit = ['./orchard/configuration/*'])
     coverage_engine.start()
 
     # Import the app and initialize it for testing.
-    os.environ['ORCHARD_CONFIGURATION'] = 'orchard.configuration.Testing'
     import orchard
+    app = orchard.create_app('Testing')
 
     # Set the directory where Hypothesis saves its files.
     import hypothesis.configuration
-    hypothesis.configuration.set_hypothesis_home_dir(orchard.app.config['HYPOTHESIS_PATH'])
+    hypothesis.configuration.set_hypothesis_home_dir(app.config['HYPOTHESIS_PATH'])
 
     # Run the specified tests.
     total_test_result = True
@@ -265,12 +270,12 @@ def test(module: str, full_coverage: bool, test_types: str):
         print('\n')
 
     # Create a fresh build directory if necessarry.
-    build_directory = os.path.join(orchard.app.config['BUILD_PATH'], 'coverage')
+    build_directory = os.path.join(app.config['BUILD_PATH'], 'coverage')
     if os.path.isdir(build_directory):
         shutil.rmtree(build_directory)
 
     # Stop the coverage engine and save the report.
-    title = '{name} Coverage Report'.format(name = orchard.app.config['PROJECT_NAME'])
+    title = '{name} Coverage Report'.format(name = app.config['PROJECT_NAME'])
     coverage_engine.stop()
     coverage_engine.save()
     coverage_result = coverage_engine.html_report(directory = build_directory, title = title)

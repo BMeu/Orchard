@@ -1,42 +1,42 @@
 # -*- coding: utf-8 -*-
 
 """
-    This module initializes the application.
-
-    .. warning:: Importing this module will directly initialize the app!
+    This module exports functions to initialize the Flask application.
 """
-
-import os
 
 from flask import Flask
 
-
-app = Flask(__name__, instance_relative_config = True)
-
-# Load the configuration from the environment or exit with an error message.
-configuration = os.environ.get('ORCHARD_CONFIGURATION')
-if configuration is None:  # pragma: no cover.
-    import sys
-    print('Error: No configuration specified. You did not provide the ORCHARD_CONFIGURATION '
-          'environment variable.')
-    sys.exit(1)
-
-# Load the specified configuration.
-app.config.from_object(configuration)
-app.config.from_object('instance.Configuration')
+import orchard.views
 
 
-@app.route("/")
-@app.route("/<string:name>")
-def index(name: str = None) -> str:
+def create_app(config: str = 'Development') -> Flask:
     """
-        Display a simple greeting.
+        Create and initialize the Flask application.
 
-        :param name: The name of the visitor.
-        :return: A message to all visitors.
+        :param config: The name of the configuration class, valid values are ``Development``
+                       (default), ``Production``, and ``Testing``.
+        :return: The initialized Flask application.
     """
-    greeting = 'Welcome to the Orchard!'
-    if name is not None:
-        greeting = 'Welcome to the Orchard, {name}!'.format(name = name)
+    configuration_values = {'Development', 'Production', 'Testing'}
+    if config in configuration_values:
+        config = 'orchard.configuration.{config}'.format(config = config)
+    else:  # pragma: no cover.
+        config = 'orchard.configuration.Development'
 
-    return greeting
+    name = __name__.split('.')[0]
+    app = Flask(name, instance_relative_config = True)
+    app.config.from_object(config)
+    app.config.from_object('instance.Configuration')
+
+    _configure_blueprints(app)
+
+    return app
+
+
+def _configure_blueprints(app: Flask):
+    """
+        Register the blueprints.
+
+        :param app: The application instance.
+    """
+    app.register_blueprint(orchard.views.views)

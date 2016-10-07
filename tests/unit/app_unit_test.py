@@ -12,9 +12,10 @@ import orchard
 class AppUnitTest(unittest.TestCase):
 
     def setUp(self):
-        self.app_context = orchard.app.app_context()
+        app = orchard.create_app('Testing')
+        self.app_context = app.app_context()
         self.app_context.push()
-        self.client = orchard.app.test_client(use_cookies = True)
+        self.client = app.test_client(use_cookies = True)
 
     def tearDown(self):
         self.app_context.pop()
