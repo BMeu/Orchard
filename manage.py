@@ -44,9 +44,8 @@ def clean(build: bool = False, logs: bool = False, hypothesis: bool = False, dry
         Remove temporary files and folders.
     """
     import shutil
-    import orchard
-
-    app = orchard.create_app('Development')
+    import instance
+    import orchard.configuration
 
     def get_deletable_paths_in_directory(directory: str) -> List[str]:
         """
@@ -61,15 +60,33 @@ def clean(build: bool = False, logs: bool = False, hypothesis: bool = False, dry
 
     # Empty the build folder.
     if build:
-        delete_list.extend(get_deletable_paths_in_directory(app.config['BUILD_PATH']))
+        try:
+            # noinspection PyUnresolvedReferences
+            build_path = instance.Configuration.BUILD_PATH
+        except AttributeError:
+            build_path = orchard.configuration.Default.BUILD_PATH
+
+        delete_list.extend(get_deletable_paths_in_directory(build_path))
 
     # Delete the log files.
     if logs:
-        delete_list.extend(get_deletable_paths_in_directory(app.config['LOG_PATH']))
+        try:
+            # noinspection PyUnresolvedReferences
+            log_path = instance.Configuration.LOG_PATH
+        except AttributeError:
+            log_path = orchard.configuration.Default.LOG_PATH
+
+        delete_list.extend(get_deletable_paths_in_directory(log_path))
 
     # Empty the property test example database.
     if hypothesis:
-        delete_list.extend(get_deletable_paths_in_directory(app.config['HYPOTHESIS_PATH']))
+        try:
+            # noinspection PyUnresolvedReferences
+            hypothesis_path = instance.Configuration.HYPOTHESIS_PATH
+        except AttributeError:
+            hypothesis_path = orchard.configuration.Default.HYPOTHESIS_PATH
+
+        delete_list.extend(get_deletable_paths_in_directory(hypothesis_path))
 
     if dry_run:
         print('\nFILES THAT WOULD BE DELETED:\n')
@@ -96,12 +113,17 @@ def doc():
 
     import shutil
     import subprocess
-    import orchard
+    import instance
+    import orchard.configuration
 
-    app = orchard.create_app('Development')
+    try:
+        # noinspection PyUnresolvedReferences
+        build_path = instance.Configuration.BUILD_PATH
+    except AttributeError:
+        build_path = orchard.configuration.Default.BUILD_PATH
 
     # Directories.
-    build_directory = os.path.join(app.config['BUILD_PATH'], 'docs')
+    build_directory = os.path.join(build_path, 'docs')
     source_directory = 'docs'
 
     # Create a fresh build directory if necessarry.
