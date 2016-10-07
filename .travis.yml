@@ -20,8 +20,8 @@ install:
   - pip install codecov
 
 script:
-  - python orchard.py test $TEST_TYPE
-  - python orchard.py lint
+  - python manage.py test $TEST_TYPE
+  - python manage.py lint
 
 after_success:
   - codecov
