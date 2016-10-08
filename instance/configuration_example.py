@@ -13,11 +13,18 @@ class Configuration:
         You can overwrite any of the values from :mod:`orchard.configuration` in this class.
     """
 
+    ADMINS = ['admin@example.com']
+    """
+        A list of email addresses of all administrators who will be notified on program failures.
+
+        :type: List[str]
+    """
+
     MAIL_SERVER = 'localhost'
     """
         An SMTP mail server used for sending all mails.
 
-        :type: basestring
+        :type: str | None
     """
 
     MAIL_PORT = 25
@@ -32,7 +39,7 @@ class Configuration:
         A user on the :attr:`.MAIL_SERVER`. If no user is required to send mails, this can be set to
         ``None``.
 
-        :type: basestring | None
+        :type: str | None
     """
 
     MAIL_PASSWORD = None
@@ -40,10 +47,10 @@ class Configuration:
         The password for the :attr:`.MAIL_USERNAME`. If no password is required, this can be set to
         ``None``.
 
-        :type: basestring | None
+        :type: str | None
     """
 
-    SECRET_KEY = 'Absolutely random and very long.'
+    SECRET_KEY = ''
     """
         A long, random, and secret string used to secure sessions.
 
