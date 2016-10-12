@@ -14,6 +14,7 @@ Content
 .. toctree::
    :maxdepth: 3
 
+   gettingstarted
    api
    license
 
