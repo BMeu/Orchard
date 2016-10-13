@@ -17,6 +17,7 @@ class IndexView(flask_classful.FlaskView):
     """
     route_base = '/'
 
+    # noinspection PyMethodMayBeStatic
     def index(self) -> str:
         """
             Display a simple greeting.
@@ -25,6 +26,7 @@ class IndexView(flask_classful.FlaskView):
         """
         return flask_babel.gettext('Welcome to the Orchard!')
 
+    # noinspection PyMethodMayBeStatic
     def get(self, name: str) -> str:
         """
             Display a simple personalized greeting.
