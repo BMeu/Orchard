@@ -6,21 +6,33 @@
 
 import flask
 import flask_babel
+import flask_classful
 
 views = flask.Blueprint('views', __name__)
 
 
-@views.route("/")
-@views.route("/<string:name>")
-def index(name: str = None) -> str:
+class IndexView(flask_classful.FlaskView):
     """
-        Display a simple greeting.
-
-        :param name: The name of the visitor.
-        :return: A message to all visitors.
+        A simple home page.
     """
-    greeting = flask_babel.gettext('Welcome to the Orchard!')
-    if name is not None:
-        greeting = flask_babel.gettext('Welcome to the Orchard, %(name)s!', name = name)
+    route_base = '/'
 
-    return greeting
+    def index(self) -> str:
+        """
+            Display a simple greeting.
+
+            :return: A message to all visitors.
+        """
+        return flask_babel.gettext('Welcome to the Orchard!')
+
+    def get(self, name: str) -> str:
+        """
+            Display a simple personalized greeting.
+
+            :param name: The name of the visitor.
+            :return: A message to the visitor.
+        """
+        return flask_babel.gettext('Welcome to the Orchard, %(name)s!', name = name)
+
+
+IndexView.register(views)
