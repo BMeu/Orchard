@@ -1,0 +1,29 @@
+# German translations for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-10-13 10:20+0200\n"
+"PO-Revision-Date: 2016-10-13 10:20+0200\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: orchard/views/__init__.py:22
+msgid "Welcome to the Orchard!"
+msgstr "Willkommen bei Orchard!"
+
+#: orchard/views/__init__.py:24
+#, python-format
+msgid "Welcome to the Orchard, %(name)s!"
+msgstr "Willkommen bei Orchard, %(name)s!"

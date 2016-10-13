@@ -5,6 +5,7 @@
 """
 
 import flask
+import flask_babel
 
 views = flask.Blueprint('views', __name__)
 
@@ -18,8 +19,8 @@ def index(name: str = None) -> str:
         :param name: The name of the visitor.
         :return: A message to all visitors.
     """
-    greeting = 'Welcome to the Orchard!'
+    greeting = flask_babel.gettext('Welcome to the Orchard!')
     if name is not None:
-        greeting = 'Welcome to the Orchard, {name}!'.format(name = name)
+        greeting = flask_babel.gettext('Welcome to the Orchard, %(name)s!', name = name)
 
     return greeting

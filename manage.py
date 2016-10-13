@@ -28,6 +28,75 @@ def main():
     pass
 
 
+@main.group()
+def babel():
+    """
+        Manage Orchard's translations.
+    """
+    pass
+
+
+@babel.command(name = 'initialize')
+@click.argument('language')
+def babel_initialize(language):
+    """
+        Initialize a new language.
+
+        [LANGUAGE]  The code of the new language, e.g. "de" or "de-DE".
+    """
+    import instance
+    try:
+        # noinspection PyUnresolvedReferences
+        build_path = instance.Configuration.BUILD_PATH
+    except AttributeError:
+        import orchard.configuration
+        build_path = orchard.configuration.Default.BUILD_PATH
+
+    pybabel = _get_pybabel_path()
+    pot_file = os.path.join(build_path, 'messages.pot')
+
+    extract_command = '{pybabel} extract -F babel.cfg -k lazy_gettext -o {pot} orchard'
+    init_command = '{pybabel} init -i {pot} -d orchard/translations -l {language}'
+    os.system(extract_command.format(pybabel = pybabel, pot = pot_file))
+    os.system(init_command.format(pybabel = pybabel, pot = pot_file, language = language))
+    os.unlink(pot_file)
+
+
+@babel.command(name = 'update')
+def babel_update():
+    """
+        Update all language source files.
+    """
+    import instance
+    try:
+        # noinspection PyUnresolvedReferences
+        build_path = instance.Configuration.BUILD_PATH
+    except AttributeError:
+        import orchard.configuration
+        build_path = orchard.configuration.Default.BUILD_PATH
+
+    pybabel = _get_pybabel_path()
+
+    pot_file = os.path.join(build_path, 'messages.pot')
+
+    extract_command = '{pybabel} extract -F babel.cfg -k lazy_gettext -o {pot} orchard'
+    update_command = '{pybabel} update -i {pot} -d orchard/translations'
+    os.system(extract_command.format(pybabel = pybabel, pot = pot_file))
+    os.system(update_command.format(pybabel = pybabel, pot = pot_file))
+    os.unlink(pot_file)
+
+
+@babel.command(name = 'compile')
+def babel_compile():
+    """
+        Compile all language source files.
+    """
+    pybabel = _get_pybabel_path()
+
+    compile_command = '{pybabel} compile -d orchard/translations'
+    os.system(compile_command.format(pybabel = pybabel))
+
+
 @main.command()
 @click.option('-b', '--build', is_flag = True, default = False, prompt = 'Empty the build folder?',
               help = 'Empty the build folder.')
@@ -313,6 +382,19 @@ def test(module: str, full_coverage: bool, test_types: str):
     coverage_engine.erase()
 
     sys.exit(0 if total_test_result else 1)
+
+
+def _get_pybabel_path() -> str:
+    """
+        Get the path to the PyBabel command on this system.
+
+        :return: A relative path within the virtual environment to ``pybabel``.
+    """
+    pybabel = 'venv/bin/pybabel'
+    if sys.platform == 'win32':
+        pybabel = 'venv\\Scripts\\pybabel'
+
+    return pybabel
 
 
 if __name__ == '__main__':

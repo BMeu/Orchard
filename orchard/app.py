@@ -6,6 +6,7 @@
 
 from flask import Flask
 
+import orchard.extensions
 import orchard.views
 
 
@@ -29,6 +30,7 @@ def create_app(config: str = 'Development') -> Flask:
     app.config.from_object('instance.Configuration')
 
     _configure_blueprints(app)
+    _configure_extensions(app)
     _configure_logging(app)
 
     return app
@@ -41,6 +43,15 @@ def _configure_blueprints(app: Flask):
         :param app: The application instance.
     """
     app.register_blueprint(orchard.views.views)
+
+
+def _configure_extensions(app: Flask):
+    """
+        Register the extensions with the app and configure them as needed.
+
+        :param app: The application instance.
+    """
+    orchard.extensions.babel.init_app(app)
 
 
 def _configure_logging(app: Flask):  # pragma: no cover.

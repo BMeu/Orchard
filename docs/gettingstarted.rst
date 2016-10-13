@@ -128,7 +128,13 @@ unpack it in the installation directory.
 
    Save the file using ``[Ctrl] + [O]``, confirm with ``[Enter]``, and exit ``[Ctrl] + [X]``.
 
-4. Optionally: If you want, you can run the tests and build the documentation to ensure
+4. Compile the translations.
+
+   .. code-block:: bash
+
+        (venv) $ ./manage.py babel compile
+
+5. Optionally: If you want, you can run the tests and build the documentation to ensure
    |projectname| is working correctly (you will need to have the virtual environment activated!).
 
    .. code-block:: bash

@@ -43,6 +43,18 @@ class Default:
            :type: basestring
     """
 
+    # Available translations.
+    LANGUAGES = {
+        'de': 'Deutsch',
+        'en': 'English'
+    }
+    """
+        A dictionary of language codes with their respective name that are available in
+        |projectname|.
+
+        :type: Dict[str, str]
+    """
+
     # Paths.
     BUILD_PATH = os.path.join(basedir, 'build')
     INSTANCE_PATH = os.path.join(basedir, 'instance')

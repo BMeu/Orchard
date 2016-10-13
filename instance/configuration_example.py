@@ -13,6 +13,20 @@ class Configuration:
         You can overwrite any of the values from :mod:`orchard.configuration` in this class.
     """
 
+    BABEL_DEFAULT_LOCALE = 'en'
+    """
+        The default language if not other could be determined.
+
+        :type: str
+    """
+
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    """
+        The default timezone when formatting dates.
+
+        :type: str
+    """
+
     ADMINS = ['admin@example.com']
     """
         A list of email addresses of all administrators who will be notified on program failures.
