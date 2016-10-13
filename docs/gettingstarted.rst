@@ -229,7 +229,7 @@ little bit more tricky. Simply setting the ``ScriptAlias`` line in step 3b to
 ``ScriptAlias / /opt/orchard.run.fcgi/`` would result in all of your other URLs being consumed by
 |projectname| and thus not working as expected anymore. What we want is |projectname| to be
 called if the requested URL does not exist on the server---that's exactly what the
-``ErrorDocument 404`` directive is for! Unfortunately, this won't allow to append the original
+``ErrorDocument 404`` directive is for! Unfortunately, this won't let us append the original
 request URL to the error document, so we will use a combination of ``ErrorDocument`` and the
 ``rewrite`` module.
 
@@ -263,7 +263,11 @@ in the fourth line rewrites all requests (if they have triggered a ``404`` error
 |projectname| script, adding the orginal requested URL which then can be handled by the script
 (the ``[L]`` stops any further processing of the request by the rewrite module). The last two
 lines simply rewrite all requests to ``/`` to the |projectname| script, so |projectname| will
-actually be opened if you access ``/`` on your server.
+actually be opened if you access ``/`` on your server. Don't forget to reload the server:
+
+.. code-block:: bash
+
+    $ sudo service apache2 reload
 
 nginx
 ~~~~~
