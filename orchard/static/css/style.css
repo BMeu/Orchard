@@ -1,0 +1,120 @@
+a {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #bfbfbf;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    font-family: -apple-system, BlinkMacSystemFont,
+        'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/**********
+ * Header *
+ **********/
+
+header {
+    flex: 0 0 auto;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#raspberry-logo {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+#raspberry-logo td {
+    padding: 0;
+    margin: 0;
+}
+
+#raspberry-logo pre {
+    font-size: 1vw;
+    margin: 0;
+    text-align: left;
+}
+
+@media screen and (min-width: 50em) {
+  #raspberry-logo pre {
+    font-size: 1em;
+  }
+}
+
+/***********
+ * Content *
+ ***********/
+
+#content {
+    flex: 1 0 auto;
+}
+
+/**********
+ * Footer *
+ **********/
+
+footer {
+    background-color: #3f3f3f;
+    box-shadow: 0 -0.25em 0.25em 0.25em #7f7f7f;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0.5em;
+    text-align: center;
+}
+
+/******************
+ * Text Alignment *
+ ******************/
+
+.halign-left {
+    text-align: left;
+}
+
+.halign-right {
+    text-align: right;
+}
+
+.valign-bottom {
+    vertical-align: bottom;
+}
+
+.valign-top {
+    vertical-align: top;
+}
+
+/***************
+ * Text Colors *
+ ***************/
+
+.raspberry-green {
+    color: #00a100;
+}
+
+.raspberry-red {
+    color: #850000;
+}
+
+.white {
+    color: #ffffff;
+}

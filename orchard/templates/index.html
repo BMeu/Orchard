@@ -1,0 +1,8 @@
+{% extends 'template_parts/base.html' %}
+{% block content %}
+    {% if name %}
+        {{ _('Welcome to the Orchard, %(name)s!', name = name) }}
+    {% else %}
+        {{ _('Welcome to the Orchard!') }}
+    {% endif %}
+{% endblock %}

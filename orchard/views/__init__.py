@@ -5,7 +5,6 @@
 """
 
 import flask
-import flask_babel
 import flask_classful
 
 views = flask.Blueprint('views', __name__)
@@ -22,9 +21,9 @@ class IndexView(flask_classful.FlaskView):
         """
             Display a simple greeting.
 
-            :return: A message to all visitors.
+            :return: The home page with a message to all visitors.
         """
-        return flask_babel.gettext('Welcome to the Orchard!')
+        return flask.render_template('index.html')
 
     # noinspection PyMethodMayBeStatic
     def get(self, name: str) -> str:
@@ -32,9 +31,9 @@ class IndexView(flask_classful.FlaskView):
             Display a simple personalized greeting.
 
             :param name: The name of the visitor.
-            :return: A message to the visitor.
+            :return: The home page with a message to the visitor.
         """
-        return flask_babel.gettext('Welcome to the Orchard, %(name)s!', name = name)
+        return flask.render_template('index.html', name = name)
 
 
 IndexView.register(views)

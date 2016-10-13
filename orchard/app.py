@@ -4,13 +4,14 @@
     This module exports functions to initialize the Flask application.
 """
 
-from flask import Flask
+import flask
+import flask_babel
 
 import orchard.extensions
 import orchard.views
 
 
-def create_app(config: str = 'Development') -> Flask:
+def create_app(config: str = 'Development') -> flask.Flask:
     """
         Create and initialize the Flask application.
 
@@ -25,18 +26,19 @@ def create_app(config: str = 'Development') -> Flask:
         config = 'orchard.configuration.Development'
 
     name = __name__.split('.')[0]
-    app = Flask(name, instance_relative_config = True)
+    app = flask.Flask(name, instance_relative_config = True)
     app.config.from_object(config)
     app.config.from_object('instance.Configuration')
 
     _configure_blueprints(app)
     _configure_extensions(app)
     _configure_logging(app)
+    _configure_request_handlers(app)
 
     return app
 
 
-def _configure_blueprints(app: Flask):
+def _configure_blueprints(app: flask.Flask):
     """
         Register the blueprints.
 
@@ -45,7 +47,7 @@ def _configure_blueprints(app: Flask):
     app.register_blueprint(orchard.views.views)
 
 
-def _configure_extensions(app: Flask):
+def _configure_extensions(app: flask.Flask):
     """
         Register the extensions with the app and configure them as needed.
 
@@ -54,7 +56,7 @@ def _configure_extensions(app: Flask):
     orchard.extensions.babel.init_app(app)
 
 
-def _configure_logging(app: Flask):  # pragma: no cover.
+def _configure_logging(app: flask.Flask):  # pragma: no cover.
     """
         Set up a file and a mail logger, unless the app is being debugged or tested.
 
@@ -97,3 +99,33 @@ def _configure_logging(app: Flask):  # pragma: no cover.
     mail_handler = logging.handlers.SMTPHandler(server, sender, receivers, subject, credentials)
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
+
+
+def _configure_request_handlers(app: flask.Flask):
+    """
+        Set up the global before and after request handlers.
+
+        :param app: The application instance.
+    """
+
+    @app.before_request
+    def before_request():
+        """
+            Set up a few things before handling the actual request.
+        """
+        flask.g.locale = flask_babel.get_locale()
+
+        # Set a default title.
+        flask.g.title = app.config['PROJECT_NAME']
+
+    @app.after_request
+    def after_request(response: flask.Response) -> flask.Response:
+        """
+            Modify the response after the request has been handled.
+
+            :return: The modified response.
+        """
+        # http://www.gnuterrypratchett.com/
+        response.headers.add("X-Clacks-Overhead", "GNU Terry Pratchett")
+
+        return response
