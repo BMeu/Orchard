@@ -7,6 +7,7 @@
 import flask
 import flask_babel
 
+import orchard.errors
 import orchard.extensions
 import orchard.views
 
@@ -44,6 +45,7 @@ def _configure_blueprints(app: flask.Flask):
 
         :param app: The application instance.
     """
+    app.register_blueprint(orchard.errors.blueprint)
     app.register_blueprint(orchard.views.views)
 
 

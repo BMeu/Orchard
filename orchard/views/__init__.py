@@ -33,6 +33,11 @@ class IndexView(flask_classful.FlaskView):
             :param name: The name of the visitor.
             :return: The home page with a message to the visitor.
         """
+        if name == 'BMeu':
+            flask.abort(500)
+        elif name == 'BMeu2':
+            raise ValueError
+
         return flask.render_template('index.html', name = name)
 
 
