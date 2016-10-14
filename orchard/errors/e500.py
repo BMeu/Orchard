@@ -14,6 +14,7 @@ class Error500View(flask_classful.FlaskView):
     """
         View for ``500 Internal Server Error`` errors.
     """
+    trailing_slash = False
 
     @blueprint.app_errorhandler(500)
     @blueprint.app_errorhandler(Exception)

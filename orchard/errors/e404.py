@@ -14,6 +14,7 @@ class Error404View(flask_classful.FlaskView):
     """
         View for ``404 Not Found`` errors.
     """
+    trailing_slash = False
 
     @blueprint.app_errorhandler(404)
     def index(self) -> str:
