@@ -250,7 +250,7 @@ in step 3:
 
 .. code-block:: apache
 
-    ErrorDocument 404 /404
+    ErrorDocument 404 /orchard
 
     RewriteEngine on
     RewriteCond %{ENV:REDIRECT_STATUS} "=404"
@@ -260,16 +260,16 @@ in step 3:
     RewriteRule (.*) /opt/orchard/run.fcgi/ [L]
 
 What does it do? Any requests that would result in a ``404 Not Found`` error will be caught by
-the first line and handled by the non-existing URL ``/404`` (you can set this to anything else if
-you want). This will also automatically set the environment variables ``REDIRECT_STATUS`` to
-``404`` and ``REDIRECT_URL`` to the requested URL, respectively. The second line simply enables the
-rewriting. The third line ensures the following rewrite rule will only be applied if the request has
-triggered a ``404`` error, using the ``REDIRECT_STATUS`` environment variable. The rewrite rule
-in the fourth line rewrites all requests (if they have triggered a ``404`` error) to the
-|projectname| script, adding the orginal requested URL which then can be handled by the script
-(the ``[L]`` stops any further processing of the request by the rewrite module). The last two
-lines simply rewrite all requests to ``/`` to the |projectname| script, so |projectname| will
-actually be opened if you access ``/`` on your server. Don't forget to reload the server:
+the first line and handled by ``/orchard``. This will also automatically set the environment
+variables ``REDIRECT_STATUS`` to ``404`` and ``REDIRECT_URL`` to the requested URL, respectively.
+The second line simply enables the rewriting. The third line ensures the following rewrite rule
+will only be applied if the request has triggered a ``404`` error, using the ``REDIRECT_STATUS``
+environment variable. The rewrite rule in the fourth line rewrites all requests (if they have
+triggered a ``404`` error) to the |projectname| script, adding the orginal requested URL which
+then can be handled by the script (the ``[L]`` stops any further processing of the request by the
+rewrite module). The last two lines simply rewrite all requests to ``/`` to the |projectname|
+script, so |projectname| will actually be opened if you access ``/`` on your server. Don't forget
+to reload the server:
 
 .. code-block:: bash
 
