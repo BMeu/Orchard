@@ -34,6 +34,13 @@ class Configuration:
         :type: List[str]
     """
 
+    MAIL_FROM = 'no-reply@example.com'
+    """
+        The address appearing as the sender of all mails.
+
+        :type: str
+    """
+
     MAIL_SERVER = 'localhost'
     """
         An SMTP mail server used for sending all mails.
@@ -46,6 +53,13 @@ class Configuration:
         The port under which the :attr:`.MAIL_SERVER` is accessible.
 
         :type: int
+    """
+
+    MAIL_SSL = False
+    """
+        If set to True, the :attr:`.MAIL_SERVER` will be accessed via SSL.
+
+        :type: bool
     """
 
     MAIL_USERNAME = None

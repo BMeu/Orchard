@@ -95,10 +95,12 @@ def _configure_logging(app: flask.Flask):  # pragma: no cover.
         credentials = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
 
     server = (app.config['MAIL_SERVER'], app.config['MAIL_PORT'])
-    sender = 'no-replay@{host}'.format(host = app.config['MAIL_SERVER'])
+    sender = app.config['MAIL_FROM']
     receivers = app.config['ADMINS']
     subject = '{name} Failure'.format(name = app.config['PROJECT_NAME'])
-    secure = ()
+    secure = None
+    if app.config['MAIL_SSL']:
+        secure = ()
     mail_handler = logging.handlers.SMTPHandler(server, sender, receivers, subject, credentials,
                                                 secure)
     mail_handler.setLevel(logging.ERROR)
