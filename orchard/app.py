@@ -105,7 +105,6 @@ def _configure_logging(app: flask.Flask):  # pragma: no cover.
                                                 secure)
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
-    app.logger.error('{name} Mail Logger Set Up'.format(name = app.config['PROJECT_NAME']))
 
 
 def _configure_request_handlers(app: flask.Flask):
