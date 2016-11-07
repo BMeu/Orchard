@@ -1,7 +1,6 @@
 <footer>
-    Orchard is licensed under the
-    <a href="http://www.opensource.org/licenses/MIT" target="_blank">MIT License</a>.
-    Visit the
-    <a href="https://github.com/BMeu/Orchard" target="_blank">project page</a> on
-    <a href="https://github.com" target="_blank">GitHub</a>.
+    {{ _('Orchard is published under the %(license)s. Visit the %(project_page)s on %(github)s.',
+         license = '<a href="http://www.opensource.org/licenses/MIT" target="_blank">'|safe + _('MIT License') + '</a>'|safe,
+         project_page = '<a href="https://github.com/BMeu/Orchard" target="_blank">'|safe + _('project page') + '</a>'|safe,
+         github = '<a href="https://github.com" target="_blank">GitHub</a>'|safe) }}
 </footer>

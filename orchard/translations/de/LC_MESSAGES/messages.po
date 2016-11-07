@@ -7,23 +7,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-10-13 10:20+0200\n"
+"POT-Creation-Date: 2016-11-07 22:59+0100\n"
 "PO-Revision-Date: 2016-10-13 10:20+0200\n"
+"Last-Translator: \n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
-"Last-Translator: \n"
-"X-Generator: Poedit 1.8.7.1\n"
 
-#: orchard/views/__init__.py:22
-msgid "Welcome to the Orchard!"
-msgstr "Willkommen bei Orchard!"
-
-#: orchard/views/__init__.py:24
+#: orchard/templates/index.html:4
 #, python-format
 msgid "Welcome to the Orchard, %(name)s!"
 msgstr "Willkommen bei Orchard, %(name)s!"
+
+#: orchard/templates/index.html:6
+msgid "Welcome to the Orchard!"
+msgstr "Willkommen bei Orchard!"
+
+#: orchard/templates/errors/404.html:3
+msgid "The page you requested does not exist."
+msgstr "Die angeforderte Seite existiert nicht."
+
+#: orchard/templates/errors/500.html:3
+msgid "The server encountered an internal error while processing your request."
+msgstr "Beim Bearbeiten Ihrer Anfrage trat ein interner Server-Fehler auf."
+
+#: orchard/templates/template_parts/footer.html:2
+#, python-format
+msgid ""
+"Orchard is published under the %(license)s. Visit the %(project_page)s on"
+" %(github)s."
+msgstr ""
+"Orchard wird unter der %(license)s veröffentlicht. Besuche die "
+"%(project_page)s auf %(github)s."
+
+#: orchard/templates/template_parts/footer.html:3
+msgid "MIT License"
+msgstr "MIT-Lizenz"
+
+#: orchard/templates/template_parts/footer.html:4
+msgid "project page"
+msgstr "Projektseite"
+
