@@ -319,7 +319,7 @@ def test(module: str, full_coverage: bool, test_types: str):
         test_types = tuple(available_tests)
 
     # Determine which modules to test.
-    start_directory = './tests/{test_type}'
+    start_directory = './tests'
     coverage_file = ['*/*.py']
     test_file = '*_{test_type}_test.py'
     if module:
