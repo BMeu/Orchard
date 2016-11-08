@@ -40,6 +40,10 @@ header {
     font-weight: bold;
 }
 
+header a {
+    text-decoration: none;
+}
+
 #raspberry-logo {
     border-collapse: collapse;
     margin: 0 auto;
@@ -123,11 +127,11 @@ footer {
  ***************/
 
 .raspberry-green {
-    color: #00a100;
+    color: #00ff00;
 }
 
 .raspberry-red {
-    color: #850000;
+    color: #ff0000;
 }
 
 .white {
