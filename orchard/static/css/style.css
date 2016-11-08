@@ -97,9 +97,16 @@ footer {
     background-color: #3f3f3f;
     box-shadow: 0 -0.25em 0.25em 0.25em #7f7f7f;
     flex: 0 0 auto;
+    font-size: 0.5em;
     margin: 0;
     padding: 0.5em;
     text-align: center;
+}
+
+@media (min-width: 768px) {
+    footer {
+        font-size: 0.75em;
+    }
 }
 
 /******************
