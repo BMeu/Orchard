@@ -1,25 +1,16 @@
 <header>
+    {% import 'macros/raspberry.html' as raspberry %}
     <a href="{{ url_for('views.IndexView:index') }}">
-     <table id="raspberry-logo">
+        <table id="raspberry-logo">
             <tr class="valign-bottom">
-                <td class="raspberry-green halign-right">
-                    <pre>
-   .~~.   .~~.
-  '. \ ' ' / .'</pre>
+                <td class="halign-right">
+                    {{ raspberry.head() }}
                 </td>
                 <td></td>
             </tr>
             <tr class="valign-top">
-                <td class="raspberry-red halign-right">
-                    <pre>
-   .~ .~~~..~.
-  : .~.'~'.~. :
- ~ (   ) (   ) ~
-( : '~'.~.'~' : )
- ~ .~ (   ) ~. ~
-  (  : '~' :  )
-   '~ .~~~. ~'
-       '~'</pre>
+                <td class="halign-right">
+                    {{ raspberry.body() }}
                 </td>
                 <td class="halign-left">
                     <pre>
