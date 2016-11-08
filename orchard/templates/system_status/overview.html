@@ -1,0 +1,16 @@
+{% extends 'template_parts/base.html' %}
+{% block content %}
+    <table id="system-status-table">
+    {% for status_group in statuses %}
+        <tr>
+            <th colspan="2" class="halign-left">{{ status_group.label }}</th>
+        </tr>
+        {% for status_item in status_group %}
+        <tr>
+            <td class="valign-top">{{ status_item.label }}</td>
+            <td class="valign-top">{{ status_item.get_current_value() }}</td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+    </table>
+{% endblock %}
