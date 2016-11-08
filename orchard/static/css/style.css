@@ -68,6 +68,21 @@ header {
 
 #content {
     flex: 1 0 auto;
+    margin: 0 1em;
+    padding: 0.5em;
+}
+
+@media (min-width: 768px) {
+    #content {
+        margin: 0 3em;
+    }
+}
+
+@media (min-width: 1200px) {
+    #content {
+        margin: 0 auto;
+        width: 1000px;
+    }
 }
 
 /**********
