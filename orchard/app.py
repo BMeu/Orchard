@@ -4,6 +4,9 @@
     This module exports functions to initialize the Flask application.
 """
 
+import random
+from typing import Any, Callable, Dict
+
 import flask
 import flask_babel
 
@@ -32,6 +35,7 @@ def create_app(config: str = 'Development') -> flask.Flask:
     app.config.from_object('instance.Configuration')
 
     _configure_blueprints(app)
+    _configure_context_processor(app)
     _configure_extensions(app)
     _configure_logging(app)
     _configure_request_handlers(app)
@@ -47,6 +51,27 @@ def _configure_blueprints(app: flask.Flask):
     """
     app.register_blueprint(orchard.errors.blueprint)
     app.register_blueprint(orchard.views.views)
+
+
+def _configure_context_processor(app: flask.Flask):
+    """
+        Set up the global context processors.
+
+        :param app: The application instance.
+    """
+
+    @app.context_processor
+    def inject_jinja2() -> Dict[str, Callable]:
+        """
+            Inject more functions into the scope of Jinja2 templates.
+
+            :return: A dictionary
+        """
+        jinja2_functions = {
+            'random_int': random.randint
+        }
+
+        return jinja2_functions
 
 
 def _configure_extensions(app: flask.Flask):

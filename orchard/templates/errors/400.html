@@ -1,0 +1,7 @@
+{% extends 'errors/base.html' %}
+{% block title %}{{ _('We do not understand your request&hellip;') }}{% endblock %}
+{% block message %}
+    <p>
+        {{ _('The request was malformed (code 400) and could not be understood by the server.') }}
+    </p>
+{% endblock %}

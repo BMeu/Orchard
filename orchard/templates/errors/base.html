@@ -1,0 +1,32 @@
+{% extends 'template_parts/base.html' %}
+{% block content %}
+    <h1>{% block title %}{% endblock %}</h1>
+    <h2>{{ _('We are so sorry about this inconvenience!') }}</h2>
+
+    <p>{{ _('A little bit more technical:') }}</p>
+    <div id="error-page-details">{% block message %}{% endblock %}</div>
+    <p>
+        {{ _('A %(start)s might help.',
+             start = '<a href="'|safe + url_for('views.IndexView:index') + '">'|safe + _('fresh start') + '</a>'|safe) }}
+        {{ _('Would a few raspberries make up for your sorrows?') }}
+    </p>
+    {% import 'macros/raspberry.html' as raspberry %}
+    <div id="error-page-raspberries">
+    {% for i in range(0, random_int(1, 5)) %}
+        <div class="error-page-raspberry">
+            <table>
+                <tr class="valign-bottom">
+                    <td class="halign-left">
+                        {{ raspberry.head() }}
+                    </td>
+                </tr>
+                <tr class="valign-top">
+                    <td class="halign-left">
+                        {{ raspberry.body() }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

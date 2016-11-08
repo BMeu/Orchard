@@ -1,0 +1,7 @@
+{% extends 'errors/base.html' %}
+{% block title %}{{ _('We cannot let you access our secret areas&hellip;') }}{% endblock %}
+{% block message %}
+    <p>
+        {{ _('You do not currently have the correct permissions to view this page (code 403).') }}
+    </p>
+{% endblock %}

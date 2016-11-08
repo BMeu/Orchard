@@ -30,6 +30,19 @@ html {
     padding: 0;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 0;
+    margin: 0;
+}
+
+pre {
+    margin: 0;
+}
+
 /**********
  * Header *
  **********/
@@ -45,18 +58,11 @@ header a {
 }
 
 #raspberry-logo {
-    border-collapse: collapse;
     margin: 0 auto;
-}
-
-#raspberry-logo td {
-    padding: 0;
-    margin: 0;
 }
 
 #raspberry-logo pre {
     font-size: 1vw;
-    margin: 0;
     text-align: left;
 }
 
@@ -107,6 +113,41 @@ footer {
     footer {
         font-size: 0.75em;
     }
+}
+
+/***************
+ * Error Pages *
+ ***************/
+
+#error-page-details {
+    font-style: italic;
+    padding: 0 1em;
+}
+
+#error-page-raspberries {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+@media (min-width: 768px) {
+    #error-page-details {
+        padding: 0 2em;
+    }
+
+    #error-page-raspberries {
+        flex-direction: row;
+    }
+}
+
+.error-page-raspberry {
+    flex: 0 0 auto;
+    margin-bottom: 1em;
+}
+
+.error-page-raspberry table {
+    margin: 0 auto;
 }
 
 /******************

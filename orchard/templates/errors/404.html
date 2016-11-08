@@ -1,4 +1,8 @@
-{% extends 'template_parts/base.html' %}
-{% block content %}
-    {{ _('The page you requested does not exist.') }}
+{% extends 'errors/base.html' %}
+{% block title %}{{ _('We could not find what you were looking for&hellip;') }}{% endblock %}
+{% block message %}
+    <p>
+        {{ _('The page you requested could not be found (code 404). This might be due to a '
+             'broken link, a mistyped URL, or simply our moving or deleting the requested page.') }}
+    </p>
 {% endblock %}

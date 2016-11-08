@@ -1,4 +1,7 @@
-{% extends 'template_parts/base.html' %}
-{% block content %}
-    {{ _('The server encountered an internal error while processing your request.') }}
+{% extends 'errors/base.html' %}
+{% block title %}{{ _('We crashed the server while handling your request&hellip;') }}{% endblock %}
+{% block message %}
+    <p>{{ _('The server encountered an internal error (code 500) while processing your request. '
+            'Our administrators have automatically been informed of this error and will see to '
+            'it as soon as possible. Please try again later.') }}</p>
 {% endblock %}
