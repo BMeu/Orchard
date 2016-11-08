@@ -25,4 +25,4 @@ class Error404UnitTest(unittest.TestCase):
         response = self.client.get('/error404')
         data = response.get_data(as_text = True)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('The page you requested does not exist.' in data)
+        self.assertTrue('The page you requested could not be found (code 404).' in data)
