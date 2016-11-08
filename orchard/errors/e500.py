@@ -39,7 +39,9 @@ class Error500View(flask_classful.FlaskView):
                             agent_browser_version = flask.request.user_agent.version,
                             agent = flask.request.user_agent.string)
 
-        flask.current_app.logger.exception(message)
+        if not flask.current_app.testing:  # pragma: no cover.
+            flask.current_app.logger.exception(message)
+
         return flask.render_template('errors/500.html')
 
 Error500View.register(blueprint)
