@@ -124,6 +124,7 @@ unpack it in the installation directory.
    .. code-block:: bash
 
         (venv) $ cp instance/configuration_example.py instance/configuration.py
+        (venv) $ cp instance/status_configuration_example.py instance/status_configuration.py
         (venv) $ nano instance/configuration.py
 
    Save the file using ``[Ctrl] + [O]``, confirm with ``[Enter]``, and exit ``[Ctrl] + [X]``.
