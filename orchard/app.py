@@ -5,7 +5,7 @@
 """
 
 import random
-from typing import Any, Callable, Dict
+from typing import Callable, Dict
 
 import flask
 import flask_babel
