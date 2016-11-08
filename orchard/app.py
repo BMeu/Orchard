@@ -12,7 +12,7 @@ import flask_babel
 
 import orchard.errors
 import orchard.extensions
-import orchard.views
+import orchard.system_status
 
 
 def create_app(config: str = 'Development') -> flask.Flask:
@@ -50,7 +50,7 @@ def _configure_blueprints(app: flask.Flask):
         :param app: The application instance.
     """
     app.register_blueprint(orchard.errors.blueprint)
-    app.register_blueprint(orchard.views.views)
+    app.register_blueprint(orchard.system_status.blueprint)
 
 
 def _configure_context_processor(app: flask.Flask):

@@ -150,6 +150,67 @@ footer {
     margin: 0 auto;
 }
 
+/*****************
+ * System Status *
+ *****************/
+
+#system-status-table {
+    margin-bottom: 1em;
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+#system-status-table td, #system-status-table th {
+    width: 200%;
+}
+
+#system-status-table td:first-child {
+    box-sizing: border-box;
+    display: block;
+    font-weight: bold;
+    padding-top: 0.5em;
+    text-align: left;
+}
+
+#system-status-table td:last-child {
+    box-sizing: border-box;
+    display: block;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-align: left;
+}
+
+#system-status-table th {
+    border-bottom: 1px dashed #ffffff;
+    font-size: 1.1em;
+    padding-top: 1em;
+}
+
+@media (min-width: 768px) {
+    #system-status-table {
+        table-layout: auto;
+        word-wrap: normal;
+    }
+
+    #system-status-table th, #system-status-table td {
+        padding: 0.5em;
+        width: auto;
+    }
+
+    #system-status-table td:first-child {
+        box-sizing: content-box;
+        display: table-cell;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    #system-status-table td:last-child {
+        box-sizing: content-box;
+        display: table-cell;
+    }
+}
+
 /******************
  * Text Alignment *
  ******************/
