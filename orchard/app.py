@@ -81,6 +81,7 @@ def _configure_extensions(app: flask.Flask):
         :param app: The application instance.
     """
     orchard.extensions.babel.init_app(app)
+    orchard.extensions.cache.init_app(app)
 
 
 def _configure_logging(app: flask.Flask):  # pragma: no cover.

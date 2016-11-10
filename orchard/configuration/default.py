@@ -20,6 +20,13 @@ class Default:
 
            :type: str
 
+        .. attribute:: CACHE_DIR
+           :annotation: = /path/to/your/cache/directory
+
+           Used for the cache. By default within the :attr:`.INSTANCE_PATH`.
+
+           :type: basestring
+
         .. attribute:: HYPOTHESIS_PATH
            :annotation: = /path/to/your/hypothesis/directory
 
@@ -60,6 +67,30 @@ class Default:
     INSTANCE_PATH = os.path.join(basedir, 'instance')
     HYPOTHESIS_PATH = os.path.join(INSTANCE_PATH, 'hypothesis')
     LOG_PATH = os.path.join(INSTANCE_PATH, 'log')
+
+    # Cache.
+    CACHE_TYPE = 'filesystem'
+    """
+        The type of cache to use.
+
+        :type: basestring
+    """
+
+    CACHE_DEFAULT_TIMEOUT = 60 * 60  # 1h
+    """
+        The time in seconds, objects will be stored in the cache.
+
+        :type: int
+    """
+
+    CACHE_DIR = os.path.join(INSTANCE_PATH, 'cache')
+
+    CACHE_THRESHOLD = 10
+    """
+        The maximum number of objects stored within the cache.
+
+        :type: int
+    """
 
     # Project name.
     PROJECT_NAME = 'Orchard'

@@ -25,3 +25,17 @@ class Testing(Default):
 
         :type: str
     """
+
+    CACHE_TYPE = 'null'
+    """
+        Disable caching during testing.
+
+        :type: basestring
+    """
+
+    CACHE_NO_NULL_WARNING = True
+    """
+        Do not warn about disabled caching.
+
+        :type: bool
+    """

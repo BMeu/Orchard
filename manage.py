@@ -100,6 +100,8 @@ def babel_compile():
 @main.command()
 @click.option('-b', '--build', is_flag = True, default = False, prompt = 'Empty the build folder?',
               help = 'Empty the build folder.')
+@click.option('-c', '--cache', is_flag = True, default = False, prompt = 'Clear the cache?',
+              help = 'Clear the cache.')
 @click.option('-l', '--logs', is_flag = True, default = False, prompt = 'Delete the log files?',
               help = 'Delete all log files.')
 @click.option('-p', '--hypothesis', is_flag = True, default = False,
@@ -108,7 +110,8 @@ def babel_compile():
 @click.option('-d', '--dry-run', is_flag = True, default = False,
               help = 'Do not actually delete anything, but instead list all files and folders '
                      'that would be deleted.')
-def clean(build: bool = False, logs: bool = False, hypothesis: bool = False, dry_run: bool = False):
+def clean(build: bool = False, cache: bool = False, logs: bool = False, hypothesis: bool = False,
+          dry_run: bool = False):
     """
         Remove temporary files and folders.
     """
@@ -136,6 +139,16 @@ def clean(build: bool = False, logs: bool = False, hypothesis: bool = False, dry
             build_path = orchard.configuration.Default.BUILD_PATH
 
         delete_list.extend(get_deletable_paths_in_directory(build_path))
+
+    # Clear the cache.
+    if cache:
+        try:
+            # noinspection PyUnresolvedReferences
+            cache_path = instance.Configuration.CACHE_DIR
+        except AttributeError:
+            cache_path = orchard.configuration.Default.CACHE_DIR
+
+        delete_list.extend(get_deletable_paths_in_directory(cache_path))
 
     # Delete the log files.
     if logs:
