@@ -7,7 +7,7 @@
 import flask_babel
 
 from orchard.system_status import StatusGroup, StatusItem
-from orchard.system_status.formatters import data
+from orchard.system_status.formatters import data, datetime
 from orchard.system_status.formatters import os as formatter_os
 from orchard.system_status.system import cpu, memory, network, os, storage
 
@@ -30,11 +30,11 @@ status_kernel = StatusItem(flask_babel.lazy_gettext('Kernel'), os.kernel_version
 status_gpu = StatusItem(flask_babel.lazy_gettext('GPU'), os.gpu_version,
                         formatter = formatter_os.gpu)
 status_boottime = StatusItem(flask_babel.lazy_gettext('Boot Time'), os.boot_time,
-                             formatter = flask_babel.format_datetime)
+                             formatter = datetime.date_and_time)
 status_runtime = StatusItem(flask_babel.lazy_gettext('Runtime'), os.run_time,
                             formatter = flask_babel.format_timedelta)
 status_current_time = StatusItem(flask_babel.lazy_gettext('Current Time'), os.current_time,
-                                 formatter = flask_babel.format_datetime)
+                                 formatter = datetime.date_and_time)
 group_os.append(status_kernel)
 group_os.append(status_gpu)
 group_os.append(status_boottime)
