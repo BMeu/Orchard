@@ -26,16 +26,31 @@ class StatusItemUnitTest(unittest.TestCase):
         self.assertEqual(status_item._label, 'Item 1')
         self.assertEqual(status_item._value_function, str)
         self.assertListEqual(status_item._function_args, [])
+        self.assertIsNone(status_item._formatter)
 
         status_item = orchard.system_status.StatusItem('Item 2', str, [42])
         self.assertEqual(status_item._label, 'Item 2')
         self.assertEqual(status_item._value_function, str)
         self.assertListEqual(status_item._function_args, [42])
+        self.assertIsNone(status_item._formatter)
 
         status_item = orchard.system_status.StatusItem('Item 3', str, {'object': 42})
         self.assertEqual(status_item._label, 'Item 3')
         self.assertEqual(status_item._value_function, str)
         self.assertDictEqual(status_item._function_args, {'object': 42})
+        self.assertIsNone(status_item._formatter)
+
+        status_item = orchard.system_status.StatusItem('Item 4', str, {'object': 42}, '{value}')
+        self.assertEqual(status_item._label, 'Item 4')
+        self.assertEqual(status_item._value_function, str)
+        self.assertDictEqual(status_item._function_args, {'object': 42})
+        self.assertEqual(status_item._formatter, '{value}')
+
+        status_item = orchard.system_status.StatusItem('Item 5', str, {'object': 42}, str)
+        self.assertEqual(status_item._label, 'Item 5')
+        self.assertEqual(status_item._value_function, str)
+        self.assertDictEqual(status_item._function_args, {'object': 42})
+        self.assertEqual(status_item._formatter, str)
 
     def test_label(self):
         status_item = orchard.system_status.StatusItem('Item 1', str)
@@ -50,6 +65,22 @@ class StatusItemUnitTest(unittest.TestCase):
 
         status_item = orchard.system_status.StatusItem('Item 3', str, {'object': 42})
         self.assertEqual(status_item.get_current_value(), '42')
+
+        status_item = orchard.system_status.StatusItem('Item 4', str, {'object': 42},
+                                                       formatter = '{value}°C')
+        self.assertEqual(status_item.get_current_value(), '42°C')
+
+        def formatter(value):
+            """
+                A simple formatter function for testing.
+            """
+            the_question = 'What is the answer to life, the universe, and everything? {value}.'
+            return the_question.format(value = value)
+
+        status_item = orchard.system_status.StatusItem('Item 5', str, {'object': 42},
+                                                       formatter = formatter)
+        self.assertEqual(status_item.get_current_value(),
+                         'What is the answer to life, the universe, and everything? 42.')
 
         # The current value depends on the time and should not stay the same.
         status_item = orchard.system_status.StatusItem('Item 4', datetime.datetime.now)
