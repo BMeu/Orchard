@@ -72,12 +72,12 @@ group_memory.append(status_swap_available)
 
 # Network.
 status_ip_external = StatusItem(flask_babel.gettext('External IP'), network.external_ip_address)
-status_ip_lan0 = StatusItem(flask_babel.gettext('Internal IP (Ethernet)'), network.ip_address,
-                            ['lan0', network.IPVersion.v4])
+status_ip_eth0 = StatusItem(flask_babel.gettext('Internal IP (Ethernet)'), network.ip_address,
+                            ['eth0', network.IPVersion.v4])
 status_ip_wlan0 = StatusItem(flask_babel.gettext('Internal IP (WLAN)'), network.ip_address,
                              ['wlan0', network.IPVersion.v4])
 group_network.append(status_ip_external)
-group_network.append(status_ip_lan0)
+group_network.append(status_ip_eth0)
 group_network.append(status_ip_wlan0)
 
 Statuses = [group_os, group_users, group_cpu, group_storage, group_memory, group_network]
