@@ -50,14 +50,14 @@ class DataUnitTest(unittest.TestCase):
         readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024)
         self.assertEqual(readable, '42.0 EiB')
 
-        readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024
-                                                     * 1024)
+        readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 *
+                                                     1024)
         self.assertEqual(readable, '42.0 ZiB')
 
-        readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024
-                                                     * 1024 * 1024)
+        readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 *
+                                                     1024 * 1024)
         self.assertEqual(readable, '42.0 YiB')
 
-        readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024
-                                                     * 1024 * 1024 * 1024)
+        readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 *
+                                                     1024 * 1024 * 1024)
         self.assertEqual(readable, '43008.0 YiB')
