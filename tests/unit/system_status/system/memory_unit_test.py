@@ -21,21 +21,21 @@ class MemoryUnitTest(unittest.TestCase):
         self.app_context.push()
         self.client = app.test_client(use_cookies = True)
 
-        svmem = collections.namedtuple('svmem', ['available', 'total', 'used'])
+        svmem = collections.namedtuple('svmem', ['free', 'total', 'used'])
         sswap = collections.namedtuple('sswap', ['free', 'total', 'used'])
-        self.memory_usage = svmem(total = 4, available = 3, used = 1)
+        self.memory_usage = svmem(total = 4, free = 3, used = 1)
         self.swap_usage = sswap(total = 4, free = 3, used = 1)
 
     def tearDown(self):
         self.app_context.pop()
 
     @mock.patch('orchard.system_status.system.memory.psutil')
-    def test_available(self, mock_psutil):
+    def test_free(self, mock_psutil):
         mock_psutil.virtual_memory.return_value = self.memory_usage
 
-        available = memory.available()
+        free = memory.free()
         self.assertTrue(mock_psutil.virtual_memory.called)
-        self.assertEqual(available, 3)
+        self.assertEqual(free, 3)
 
     @mock.patch('orchard.system_status.system.memory.psutil')
     def test_total(self, mock_psutil):

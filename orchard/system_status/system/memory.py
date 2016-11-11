@@ -7,14 +7,14 @@
 import psutil
 
 
-def available() -> int:
+def free() -> int:
     """
         Get the amount of memory available for usage.
 
         :return: The memory in Bytes that can be used.
     """
     memory = psutil.virtual_memory()
-    return memory.available
+    return memory.free
 
 
 def total() -> int:
@@ -33,8 +33,7 @@ def used() -> int:
 
         :return: The amount of memory in Bytes that is being used.
     """
-    memory = psutil.virtual_memory()
-    return memory.used
+    return total() - free()
 
 
 def swap_available() -> int:
