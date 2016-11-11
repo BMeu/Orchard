@@ -85,7 +85,7 @@ class Default:
 
     CACHE_DIR = os.path.join(INSTANCE_PATH, 'cache')
 
-    CACHE_THRESHOLD = 10
+    CACHE_THRESHOLD = 50
     """
         The maximum number of objects stored within the cache.
 
