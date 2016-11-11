@@ -15,7 +15,7 @@ env:
 
 before_install:
   - cp instance/configuration_example.py instance/configuration.py
-  - cp instance/status_configuration_example.py instance/status_configuration.py
+  - cp instance/status_configuration_travis_example.py instance/status_configuration.py
 
 install:
   - pip install -r requirements.txt
