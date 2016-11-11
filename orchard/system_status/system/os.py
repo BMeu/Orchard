@@ -11,6 +11,8 @@ import subprocess
 
 import psutil
 
+import orchard.extensions
+
 gpu = collections.namedtuple('gpu', ['hash', 'compile_time'])
 kernel = collections.namedtuple('kernel', ['system', 'version', 'compile_time'])
 login = collections.namedtuple('login', ['user', 'host', 'login_time'])
@@ -43,6 +45,7 @@ def current_time() -> datetime.datetime:
     return datetime.datetime.now()
 
 
+@orchard.extensions.cache.memoize()
 def gpu_version() -> gpu:
     """
         Get the firmware version of the GPU.
@@ -74,6 +77,7 @@ def gpu_version() -> gpu:
     return gpu(hash = firmware_hash, compile_time = compile_time)
 
 
+@orchard.extensions.cache.memoize()
 def kernel_version() -> kernel:
     """
         Get information on the kernel version.

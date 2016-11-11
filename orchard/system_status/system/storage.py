@@ -6,6 +6,8 @@
 
 import psutil
 
+import orchard.extensions
+
 
 def available() -> int:
     """
@@ -17,6 +19,7 @@ def available() -> int:
     return storage.free
 
 
+@orchard.extensions.cache.memoize()
 def total() -> int:
     """
         The total amount of space provided by the storage.

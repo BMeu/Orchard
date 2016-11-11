@@ -22,6 +22,7 @@ class IPVersion(enum.Enum):
     v6 = 6
 
 
+@orchard.extensions.cache.memoize()
 def hostname() -> str:
     """
         Get the host name of the system.

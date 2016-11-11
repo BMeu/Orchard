@@ -6,6 +6,8 @@
 
 import psutil
 
+import orchard.extensions
+
 
 def free() -> int:
     """
@@ -17,6 +19,7 @@ def free() -> int:
     return memory.free
 
 
+@orchard.extensions.cache.memoize()
 def total() -> int:
     """
         Get the total amount of memory.
@@ -46,6 +49,7 @@ def swap_available() -> int:
     return swap.free
 
 
+@orchard.extensions.cache.memoize()
 def swap_total() -> int:
     """
         Get the total amount of swap memory.
