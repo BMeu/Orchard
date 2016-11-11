@@ -189,7 +189,28 @@ Apache
         $ chmod -R g+w .
         $ chmod g+s `find . -type d`
 
-3. Tell Apache where to find |projectname|.
+3. |projectname| uses the script ``/opt/vc/bin/vcgencmd`` to retrieve some information on the
+   system. However, this script requires root permissions to be executed. Therefore, we will allow
+   our newly created group to execute exactly this script (and nothing else) using ``sudo`` without
+   asking for a password.
+
+   Open the ``sudoers`` file:
+
+   .. code-block:: bash
+
+        $ sudo visudo
+
+   Then add the following lines at the end of the file; make sure to leave the very last line blank:
+
+   .. code-block:: text
+
+         # Allow the Orchard group to execute the vcgencmd script.
+         %orchard ALL=NOPASSWD: /opt/vc/bin/vcgencmd
+
+   Save and exit the file (if you are using ``nano`` as your default editor, ``[Ctrl] + [O]``,
+   ``[Enter]``, and ``[Ctrl] + [X]``).
+
+4. Tell Apache where to find |projectname|.
 
    a. If you do not use SSL, open the following file:
 
@@ -222,7 +243,7 @@ Apache
 
    Save the file using ``[Ctrl] + [O]``, confirm with ``[Enter]``, and exit ``[Ctrl] + [X]``.
 
-4. Reload the server:
+5. Reload the server:
 
    .. code-block:: bash
 
