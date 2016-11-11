@@ -55,7 +55,7 @@ def babel_initialize(language):
     pybabel = _get_pybabel_path()
     pot_file = os.path.join(build_path, 'messages.pot')
 
-    extract_command = '{pybabel} extract -F babel.cfg -k lazy_gettext -o {pot} orchard'
+    extract_command = '{pybabel} extract -F babel.cfg -k lazy_gettext -o {pot} orchard instance'
     init_command = '{pybabel} init -i {pot} -d orchard/translations -l {language}'
     os.system(extract_command.format(pybabel = pybabel, pot = pot_file))
     os.system(init_command.format(pybabel = pybabel, pot = pot_file, language = language))
@@ -79,7 +79,7 @@ def babel_update():
 
     pot_file = os.path.join(build_path, 'messages.pot')
 
-    extract_command = '{pybabel} extract -F babel.cfg -k lazy_gettext -o {pot} orchard'
+    extract_command = '{pybabel} extract -F babel.cfg -k lazy_gettext -o {pot} orchard instance'
     update_command = '{pybabel} update -i {pot} -d orchard/translations'
     os.system(extract_command.format(pybabel = pybabel, pot = pot_file))
     os.system(update_command.format(pybabel = pybabel, pot = pot_file))

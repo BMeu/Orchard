@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-11 22:20+0100\n"
-"PO-Revision-Date: 2016-11-11 22:22+0100\n"
+"POT-Creation-Date: 2016-11-11 23:40+0100\n"
+"PO-Revision-Date: 2016-11-11 23:43+0100\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
@@ -18,6 +18,202 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 "X-Generator: Poedit 1.8.7.1\n"
+
+#: instance/status_configuration.py:15
+#: instance/status_configuration_example.py:15
+#: instance/status_configuration_travis_example.py:15
+msgid "CPU"
+msgstr "CPU"
+
+#: instance/status_configuration.py:16
+#: instance/status_configuration_example.py:16
+#: instance/status_configuration_travis_example.py:16
+msgid "Load"
+msgstr "Auslastung"
+
+#: instance/status_configuration.py:17
+#: instance/status_configuration_example.py:17
+#: instance/status_configuration_travis_example.py:17
+msgid "Memory"
+msgstr "Hauptspeicher"
+
+#: instance/status_configuration.py:18
+#: instance/status_configuration_example.py:18
+#: instance/status_configuration_travis_example.py:18
+msgid "RAM"
+msgstr "RAM"
+
+#: instance/status_configuration.py:19
+#: instance/status_configuration_example.py:19
+#: instance/status_configuration_travis_example.py:19
+msgid "Swap"
+msgstr "Swap"
+
+#: instance/status_configuration.py:20
+#: instance/status_configuration_example.py:20
+#: instance/status_configuration_travis_example.py:20
+msgid "Network"
+msgstr "Netzwerk"
+
+#: instance/status_configuration.py:21
+#: instance/status_configuration_example.py:21
+#: instance/status_configuration_travis_example.py:21
+msgid "Internal IP"
+msgstr "Interne IP"
+
+#: instance/status_configuration.py:22
+#: instance/status_configuration_example.py:22
+#: instance/status_configuration_travis_example.py:22
+msgid "Operating System"
+msgstr "Betriebssystem"
+
+#: instance/status_configuration.py:23
+#: instance/status_configuration_example.py:23
+#: instance/status_configuration_travis_example.py:23
+msgid "Storage"
+msgstr "Speicher"
+
+#: instance/status_configuration.py:24
+#: instance/status_configuration_example.py:24
+#: instance/status_configuration_travis_example.py:24
+msgid "Usage"
+msgstr "Benutzung"
+
+#: instance/status_configuration.py:25
+#: instance/status_configuration_example.py:25
+#: instance/status_configuration_travis_example.py:25
+msgid "Users"
+msgstr "Benutzer"
+
+#: instance/status_configuration.py:28
+#: instance/status_configuration_example.py:28
+#: instance/status_configuration_travis_example.py:28
+msgid "Kernel"
+msgstr "Kernel"
+
+#: instance/status_configuration.py:30
+#: instance/status_configuration_example.py:30
+msgid "GPU"
+msgstr "GPU"
+
+#: instance/status_configuration.py:32
+#: instance/status_configuration_example.py:32
+#: instance/status_configuration_travis_example.py:30
+msgid "Boot Time"
+msgstr "Startzeit"
+
+#: instance/status_configuration.py:34
+#: instance/status_configuration_example.py:34
+#: instance/status_configuration_travis_example.py:32
+msgid "Runtime"
+msgstr "Laufzeit"
+
+#: instance/status_configuration.py:36
+#: instance/status_configuration_example.py:36
+#: instance/status_configuration_travis_example.py:34
+msgid "Current Time"
+msgstr "Aktuelle Zeit"
+
+#: instance/status_configuration.py:45
+#: instance/status_configuration_example.py:45
+#: instance/status_configuration_travis_example.py:42
+msgid "Current Logins"
+msgstr "Aktuelle Logins"
+
+#: instance/status_configuration.py:47
+#: instance/status_configuration_example.py:47
+#: instance/status_configuration_travis_example.py:44
+msgid "Last Login"
+msgstr "Letzter Login"
+
+#: instance/status_configuration.py:53
+#: instance/status_configuration_example.py:53
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: instance/status_configuration.py:55
+#: instance/status_configuration_example.py:55
+#: instance/status_configuration_travis_example.py:50
+msgid "Running Processes"
+msgstr "Laufende Prozesse"
+
+#: instance/status_configuration.py:56
+#: instance/status_configuration_example.py:56
+#: instance/status_configuration_travis_example.py:51
+msgid "1-Minute Average"
+msgstr "1-Minuten-Schnitt"
+
+#: instance/status_configuration.py:58
+#: instance/status_configuration_example.py:58
+#: instance/status_configuration_travis_example.py:53
+msgid "5-Minute Average"
+msgstr "5-Minuten-Schnitt"
+
+#: instance/status_configuration.py:60
+#: instance/status_configuration_example.py:60
+#: instance/status_configuration_travis_example.py:55
+msgid "15-Minute Average"
+msgstr "15-Minuten-Schnitt"
+
+#: instance/status_configuration.py:70 instance/status_configuration.py:82
+#: instance/status_configuration.py:88
+#: instance/status_configuration_example.py:70
+#: instance/status_configuration_example.py:82
+#: instance/status_configuration_example.py:88
+#: instance/status_configuration_travis_example.py:64
+#: instance/status_configuration_travis_example.py:76
+#: instance/status_configuration_travis_example.py:82
+msgid "Total"
+msgstr "Insgesamt"
+
+#: instance/status_configuration.py:72 instance/status_configuration.py:84
+#: instance/status_configuration.py:90
+#: instance/status_configuration_example.py:72
+#: instance/status_configuration_example.py:84
+#: instance/status_configuration_example.py:90
+#: instance/status_configuration_travis_example.py:66
+#: instance/status_configuration_travis_example.py:78
+#: instance/status_configuration_travis_example.py:84
+msgid "Used"
+msgstr "Genutzt"
+
+#: instance/status_configuration.py:74 instance/status_configuration.py:92
+#: instance/status_configuration_example.py:74
+#: instance/status_configuration_example.py:92
+#: instance/status_configuration_travis_example.py:68
+#: instance/status_configuration_travis_example.py:86
+msgid "Available"
+msgstr "Verfügbar"
+
+#: instance/status_configuration.py:86
+#: instance/status_configuration_example.py:86
+#: instance/status_configuration_travis_example.py:80
+msgid "Free"
+msgstr "Frei"
+
+#: instance/status_configuration.py:104
+#: instance/status_configuration_example.py:104
+#: instance/status_configuration_travis_example.py:98
+msgid "Host Name"
+msgstr "Hostname"
+
+#: instance/status_configuration.py:105
+#: instance/status_configuration_example.py:105
+#: instance/status_configuration_travis_example.py:99
+msgid "External IP"
+msgstr "Externe IP"
+
+#: instance/status_configuration.py:106
+#: instance/status_configuration_example.py:106
+#: instance/status_configuration_travis_example.py:100
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: instance/status_configuration.py:108
+#: instance/status_configuration_example.py:108
+#: instance/status_configuration_travis_example.py:102
+msgid "WLAN"
+msgstr "WLAN"
 
 #: orchard/system_status/formatters/os.py:19
 #, python-format
@@ -135,9 +331,3 @@ msgstr "MIT-Lizenz"
 #: orchard/templates/template_parts/footer.html:4
 msgid "project page"
 msgstr "Projektseite"
-
-#~ msgid "Welcome to the Orchard, %(name)s!"
-#~ msgstr "Willkommen bei Orchard, %(name)s!"
-
-#~ msgid "Welcome to the Orchard!"
-#~ msgstr "Willkommen bei Orchard!"
