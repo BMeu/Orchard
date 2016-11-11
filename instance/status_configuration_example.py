@@ -24,12 +24,15 @@ status_kernel = StatusItem(flask_babel.gettext('Kernel'), os.kernel_version,
                            formatter = formatter_os.kernel)
 status_gpu = StatusItem(flask_babel.gettext('GPU'), os.gpu_version,
                         formatter = formatter_os.gpu)
+status_boottime = StatusItem(flask_babel.gettext('Boot Time'), os.boot_time,
+                             formatter = flask_babel.format_datetime)
 status_runtime = StatusItem(flask_babel.gettext('Runtime'), os.run_time,
                             formatter = flask_babel.format_timedelta)
 status_current_time = StatusItem(flask_babel.gettext('Current Time'), os.current_time,
                                  formatter = flask_babel.format_datetime)
 group_os.append(status_kernel)
 group_os.append(status_gpu)
+group_os.append(status_boottime)
 group_os.append(status_runtime)
 group_os.append(status_current_time)
 
