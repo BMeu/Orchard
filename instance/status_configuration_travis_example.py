@@ -25,7 +25,6 @@ status_runtime = StatusItem(flask_babel.gettext('Runtime'), os.run_time,
 status_current_time = StatusItem(flask_babel.gettext('Current Time'), os.current_time,
                                  formatter = flask_babel.format_datetime)
 group_os.append(status_kernel)
-group_os.append(status_gpu)
 group_os.append(status_runtime)
 group_os.append(status_current_time)
 
@@ -45,7 +44,6 @@ status_load_five = StatusItem(flask_babel.gettext('Load (5-minute average)'), cp
                               [cpu.LoadPeriods.five])
 status_load_fifteen = StatusItem(flask_babel.gettext('Load (15-minute average)'), cpu.load,
                                  [cpu.LoadPeriods.fifteen])
-group_cpu.append(status_temperature)
 group_cpu.append(status_processes)
 group_cpu.append(status_load_one)
 group_cpu.append(status_load_five)
