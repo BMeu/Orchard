@@ -57,7 +57,8 @@ def gpu_version() -> gpu:
     output, _ = process.communicate()
 
     # Simplify the output.
-    gpu_details = output.decode('utf-8').replace('\n', ' ').split(' ')
+    gpu_details = output.decode('utf-8').replace('\n', ' ')
+    gpu_details = re.sub(' +', ' ', gpu_details).split(' ')
     firmware_hash = gpu_details[9]
 
     year = gpu_details[2]

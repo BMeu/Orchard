@@ -56,9 +56,9 @@ class OSUnitTest(unittest.TestCase):
 
     @mock.patch('subprocess.Popen')
     def test_gpu_version(self, mock_popen):
-        data = (b'Oct 25 2016 16:03:42\n' +
+        data = (b'Oct 25 2016 16:03:42 \n' +
                 b'Copyright (c) 2012 Broadcom\n' +
-                b'version f74adfcae00b721627eab44590728c13860bcbc2 (clean) (release))')
+                b'version f74adfcae00b721627eab44590728c13860bcbc2 (clean) (release))\n')
         expected_value = os.gpu(hash = 'f74adfcae00b721627eab44590728c13860bcbc2',
                                 compile_time = datetime.datetime(2016, 10, 25, 16, 3, 42))
         mock_process = mock.Mock()
