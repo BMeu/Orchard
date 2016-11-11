@@ -5,10 +5,18 @@
         <tr>
             <th colspan="2" class="halign-left">{{ status_group.label }}</th>
         </tr>
-        {% for status_item in status_group %}
+        {% for status in status_group %}
         <tr>
-            <td class="valign-top">{{ status_item.label }}</td>
-            <td class="valign-top">{{ status_item.get_current_value() }}</td>
+            <td class="valign-top">{{ status.label }}</td>
+            <td class="valign-top">
+            {% if hasattr(status, '__iter__') %}
+                {% for substatus in status %}
+                <p>{{ substatus.label }}: {{ substatus.get_current_value() }}</p>
+                {% endfor %}
+            {% else %}
+                {{ status.get_current_value() }}
+            {% endif %}
+            </td>
         </tr>
         {% endfor %}
     {% endfor %}

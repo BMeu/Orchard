@@ -39,6 +39,11 @@ table td {
     margin: 0;
 }
 
+p {
+    margin-bottom: 0.25em;
+    margin-top: 0;
+}
+
 pre {
     margin: 0;
 }

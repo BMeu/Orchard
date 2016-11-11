@@ -68,6 +68,7 @@ def _configure_context_processor(app: flask.Flask):
             :return: A dictionary
         """
         jinja2_functions = {
+            'hasattr': hasattr,
             'random_int': random.randint
         }
 

@@ -4,7 +4,7 @@
     This module provides the ``StatusGroup`` class collecting multiple :cls:`StatusItem`s.
 """
 
-from typing import Iterator
+from typing import Iterator, Union
 
 from orchard.system_status import StatusItem
 
@@ -20,6 +20,8 @@ class StatusGroup:
         """
         self._label = label
         self._items = []
+        self._has_subgroups = False
+        self._is_subgroup = False
 
     @property
     def label(self) -> str:
@@ -30,13 +32,25 @@ class StatusGroup:
         """
         return self._label
 
-    def append(self, status_item: StatusItem):
+    def append(self, status: Union['StatusGroup', StatusItem]) -> bool:
         """
-            Add a status item to the end of the group.
+            Append either a StatusItem to the end of the group, or a StatusGroup. A StatusGroup
+            will only be appended if ``self`` is not a subgroup itself and ``status`` does not
+            have any subgroups (i.e. only one level of nesting is allowed).
 
-            :param status_item: The status item
+            :param status: The status item or group.
+            :return: True if the status has successfully been appended.
         """
-        self._items.append(status_item)
+        # Only allow one level of nesting.
+        if isinstance(status, StatusGroup):
+            if status._has_subgroups or self._is_subgroup:
+                return False
+
+            self._has_subgroups = True
+            status._is_subgroup = True
+
+        self._items.append(status)
+        return True
 
     def __iter__(self) -> Iterator:
         """
