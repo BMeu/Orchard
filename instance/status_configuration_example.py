@@ -101,11 +101,13 @@ group_memory.append(group_memory_ram)
 group_memory.append(group_memory_swap)
 
 # Network.
+status_hostname = StatusItem(flask_babel.gettext('Host Name'), network.hostname)
 status_ip_external = StatusItem(flask_babel.gettext('External IP'), network.external_ip_address)
 status_ip_eth0 = StatusItem(flask_babel.gettext('Ethernet'), network.ip_address,
                             ['eth0', network.IPVersion.v4])
 status_ip_wlan0 = StatusItem(flask_babel.gettext('WLAN'), network.ip_address,
                              ['wlan0', network.IPVersion.v4])
+group_network.append(status_hostname)
 group_network.append(status_ip_external)
 group_network.append(group_network_internal_ip)
 group_network_internal_ip.append(status_ip_eth0)
