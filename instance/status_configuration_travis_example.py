@@ -8,6 +8,7 @@ import flask_babel
 
 from orchard.system_status import StatusGroup, StatusItem
 from orchard.system_status.formatters import data
+from orchard.system_status.formatters import os as formatter_os
 from orchard.system_status.system import cpu, memory, network, os, storage
 
 # Create the status groups.
@@ -19,7 +20,8 @@ group_storage = StatusGroup(flask_babel.gettext('Storage'))
 group_users = StatusGroup(flask_babel.gettext('Users'))
 
 # Operating System.
-status_kernel = StatusItem(flask_babel.gettext('Kernel'), os.kernel_version)
+status_kernel = StatusItem(flask_babel.gettext('Kernel'), os.kernel_version,
+                           formatter = formatter_os.kernel)
 status_runtime = StatusItem(flask_babel.gettext('Runtime'), os.run_time,
                             formatter = flask_babel.format_timedelta)
 status_current_time = StatusItem(flask_babel.gettext('Current Time'), os.current_time,
@@ -30,9 +32,9 @@ group_os.append(status_current_time)
 
 # Users.
 status_current_logins = StatusItem(flask_babel.gettext('Current Logins'), os.current_logins,
-                                   formatter = flask_babel.gettext('Currently, {value} users are '
-                                                                   'logged in.'))
-status_last_login = StatusItem(flask_babel.gettext('Last Login'), os.last_login)
+                                   formatter = formatter_os.current_logins)
+status_last_login = StatusItem(flask_babel.gettext('Last Login'), os.last_login,
+                               formatter = formatter_os.last_login)
 group_users.append(status_current_logins)
 group_users.append(status_last_login)
 
