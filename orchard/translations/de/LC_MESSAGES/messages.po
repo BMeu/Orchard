@@ -7,25 +7,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-08 13:02+0100\n"
-"PO-Revision-Date: 2016-10-13 10:20+0200\n"
+"POT-Creation-Date: 2016-11-11 22:20+0100\n"
+"PO-Revision-Date: 2016-11-11 22:22+0100\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: orchard/templates/index.html:4
+#: orchard/system_status/formatters/os.py:19
 #, python-format
-msgid "Welcome to the Orchard, %(name)s!"
-msgstr "Willkommen bei Orchard, %(name)s!"
+msgid "Currently, one user is logged in."
+msgid_plural "Currently, %(num)d users are logged in."
+msgstr[0] "Momentan ist ein Benutzer angemeldet."
+msgstr[1] "Momentan sind %(num)d Benutzer angemeldet."
 
-#: orchard/templates/index.html:6
-msgid "Welcome to the Orchard!"
-msgstr "Willkommen bei Orchard!"
+#: orchard/system_status/formatters/os.py:33
+#, python-format
+msgid "%(hash)s of %(compile_time)s"
+msgstr "%(hash)s vom %(compile_time)s"
+
+#: orchard/system_status/formatters/os.py:45
+#, python-format
+msgid "%(system)s %(version)s of %(compile_time)s"
+msgstr "%(system)s %(version)s vom %(compile_time)s"
+
+#: orchard/system_status/formatters/os.py:57
+#, python-format
+msgid "User \"%(user)s\" from %(host)s on %(date)s"
+msgstr "Benutzer \"%(user)s\" von %(host)s am %(date)s"
 
 #: orchard/templates/errors/400.html:2
 msgid "We do not understand your request&hellip;"
@@ -45,8 +59,8 @@ msgstr "Wir können dich nicht in unsere geheimen Bereiche lassen&hellip;"
 
 #: orchard/templates/errors/403.html:5
 msgid ""
-"You do not currently have the correct permissions to view this page (code"
-" 403)."
+"You do not currently have the correct permissions to view this page "
+"(code 403)."
 msgstr ""
 "Du hast im Moment nicht die benötigten Berechtigungen, um diese Seite zu "
 "öffnen (Code 403)."
@@ -74,14 +88,15 @@ msgstr ""
 
 #: orchard/templates/errors/500.html:4
 msgid ""
-"The server encountered an internal error (code 500) while processing your"
-" request. Our administrators have automatically been informed of this "
-"error and will see to it as soon as possible. Please try again later."
+"The server encountered an internal error (code 500) while processing "
+"your request. Our administrators have automatically been informed of "
+"this error and will see to it as soon as possible. Please try again "
+"later."
 msgstr ""
 "Beim Bearbeiten deiner Anfrage trat ein interner Server-Fehler auf (Code "
 "500). Unsere Administratoren wurden automatisch über diesen Zwischenfall "
-"in Kenntnis gesetzt und werden sich so schnell wie möglich darum kümmern."
-" Bitte versuche es später erneut."
+"in Kenntnis gesetzt und werden sich so schnell wie möglich darum "
+"kümmern. Bitte versuche es später erneut."
 
 #: orchard/templates/errors/base.html:4
 msgid "We are so sorry about this inconvenience!"
@@ -107,8 +122,8 @@ msgstr "Können solange ein paar Himbeeren Deinen Kummer lindern?"
 #: orchard/templates/template_parts/footer.html:2
 #, python-format
 msgid ""
-"Orchard is published under the %(license)s. Visit the %(project_page)s on"
-" %(github)s."
+"Orchard is published under the %(license)s. Visit the %(project_page)s "
+"on %(github)s."
 msgstr ""
 "Orchard wird unter der %(license)s veröffentlicht. Besuche die "
 "%(project_page)s auf %(github)s."
@@ -121,3 +136,8 @@ msgstr "MIT-Lizenz"
 msgid "project page"
 msgstr "Projektseite"
 
+#~ msgid "Welcome to the Orchard, %(name)s!"
+#~ msgstr "Willkommen bei Orchard, %(name)s!"
+
+#~ msgid "Welcome to the Orchard!"
+#~ msgstr "Willkommen bei Orchard!"
