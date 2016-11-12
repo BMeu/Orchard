@@ -214,10 +214,6 @@ footer {
     text-align: left;
 }
 
-.halign-right {
-    text-align: right;
-}
-
 .valign-bottom {
     vertical-align: bottom;
 }
@@ -229,14 +225,6 @@ footer {
 /***************
  * Text Colors *
  ***************/
-
-.raspberry-green {
-    color: #00ff00;
-}
-
-.raspberry-red {
-    color: #ff0000;
-}
 
 .white {
     color: #ffffff;
