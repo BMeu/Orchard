@@ -17,6 +17,7 @@ Content
    gettingstarted
    userguide
    api
+   changelog
    license
 
 Copyright |copy| 2016 Bastian Meyer. |projectname| is licensed under the

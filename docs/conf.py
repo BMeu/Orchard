@@ -24,7 +24,7 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 
 PROJECTNAME = 'Orchard'
-VERSION = '0.0.1'
+VERSION = '0.1.0'
 
 # -- General configuration ------------------------------------------------
 
