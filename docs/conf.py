@@ -142,6 +142,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'description': ('{name} is a web application designed for a Raspberry Pi server to monitor ' +
                     'its status.').format(name = PROJECTNAME),
+    'logo': 'logo.png',
     'github_banner': True,
     'github_user': 'BMeu',
     'github_repo': 'Orchard',
