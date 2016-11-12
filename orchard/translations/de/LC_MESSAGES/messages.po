@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-12 00:03+0100\n"
-"PO-Revision-Date: 2016-11-12 00:03+0100\n"
+"POT-Creation-Date: 2016-11-12 18:11+0100\n"
+"PO-Revision-Date: 2016-11-12 18:11+0100\n"
 "Last-Translator: \n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
@@ -18,128 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 "X-Generator: Poedit 1.8.7.1\n"
-
-#: orchard/system_status/formatters/datetime.py:19
-#, python-format
-msgid "%(datetime)s"
-msgstr "%(datetime)s Uhr"
-
-#: orchard/system_status/formatters/os.py:19
-#, python-format
-msgid "Currently, one user is logged in."
-msgid_plural "Currently, %(num)d users are logged in."
-msgstr[0] "Momentan ist ein Benutzer angemeldet."
-msgstr[1] "Momentan sind %(num)d Benutzer angemeldet."
-
-#: orchard/system_status/formatters/os.py:33
-#, python-format
-msgid "%(hash)s of %(compile_time)s"
-msgstr "%(hash)s vom %(compile_time)s Uhr"
-
-#: orchard/system_status/formatters/os.py:45
-#, python-format
-msgid "%(system)s %(version)s of %(compile_time)s"
-msgstr "%(system)s %(version)s vom %(compile_time)s Uhr"
-
-#: orchard/system_status/formatters/os.py:57
-#, python-format
-msgid "User \"%(user)s\" from %(host)s on %(date)s"
-msgstr "Benutzer \"%(user)s\" von %(host)s am %(date)s Uhr"
-
-#: orchard/templates/errors/400.html:2
-msgid "We do not understand your request&hellip;"
-msgstr "Wir verstehen Deine Anfrage nicht&hellip;"
-
-#: orchard/templates/errors/400.html:5
-msgid ""
-"The request was malformed (code 400) and could not be understood by the "
-"server."
-msgstr ""
-"Die Anfrage war fehlerhaft aufgebaut (Code 400) und konnte vom Server "
-"nicht verstanden werden."
-
-#: orchard/templates/errors/403.html:2
-msgid "We cannot let you access our secret areas&hellip;"
-msgstr "Wir können dich nicht in unsere geheimen Bereiche lassen&hellip;"
-
-#: orchard/templates/errors/403.html:5
-msgid ""
-"You do not currently have the correct permissions to view this page "
-"(code 403)."
-msgstr ""
-"Du hast im Moment nicht die benötigten Berechtigungen, um diese Seite zu "
-"öffnen (Code 403)."
-
-#: orchard/templates/errors/404.html:2
-msgid "We could not find what you were looking for&hellip;"
-msgstr "Wir konnten nicht finden, wonach Du gesucht hast&hellip;"
-
-#: orchard/templates/errors/404.html:5
-msgid ""
-"The page you requested could not be found (code 404). This might be due "
-"to a broken link, a mistyped URL, or simply our moving or deleting the "
-"requested page."
-msgstr ""
-"Die Seite, die Du angefordert hast, konnte nicht gefunden werden (Code "
-"404). Dies kann an einem defekten Link liegen, einem Tippfehler in der "
-"URL, oder einfach daran, dass wir die angeforderte Seite verschoben oder "
-"gelöscht haben."
-
-#: orchard/templates/errors/500.html:2
-msgid "We crashed the server while handling your request&hellip;"
-msgstr ""
-"Wir haben den Server abstürzen lassen, während wir Deine Anfrage "
-"bearbeiteten&hellip;"
-
-#: orchard/templates/errors/500.html:4
-msgid ""
-"The server encountered an internal error (code 500) while processing "
-"your request. Our administrators have automatically been informed of "
-"this error and will see to it as soon as possible. Please try again "
-"later."
-msgstr ""
-"Beim Bearbeiten deiner Anfrage trat ein interner Server-Fehler auf (Code "
-"500). Unsere Administratoren wurden automatisch über diesen Zwischenfall "
-"in Kenntnis gesetzt und werden sich so schnell wie möglich darum "
-"kümmern. Bitte versuche es später erneut."
-
-#: orchard/templates/errors/base.html:4
-msgid "We are so sorry about this inconvenience!"
-msgstr "Diese Unannehmlichkeit tut uns unglaublich leid!"
-
-#: orchard/templates/errors/base.html:6
-msgid "A little bit more technical:"
-msgstr "Oder etwas technischer:"
-
-#: orchard/templates/errors/base.html:9
-#, python-format
-msgid "A %(start)s might help."
-msgstr "Es könnte helfen, noch einmal %(start)s zu starten."
-
-#: orchard/templates/errors/base.html:10
-msgid "fresh start"
-msgstr "ganz von vorn"
-
-#: orchard/templates/errors/base.html:11
-msgid "Would a few raspberries make up for your sorrows?"
-msgstr "Können solange ein paar Himbeeren Deinen Kummer lindern?"
-
-#: orchard/templates/template_parts/footer.html:2
-#, python-format
-msgid ""
-"Orchard is published under the %(license)s. Visit the %(project_page)s "
-"on %(github)s."
-msgstr ""
-"Orchard wird unter der %(license)s veröffentlicht. Besuche die "
-"%(project_page)s auf %(github)s."
-
-#: orchard/templates/template_parts/footer.html:3
-msgid "MIT License"
-msgstr "MIT-Lizenz"
-
-#: orchard/templates/template_parts/footer.html:4
-msgid "project page"
-msgstr "Projektseite"
 
 #: instance/status_configuration.py:15
 #: instance/status_configuration_example.py:15
@@ -336,6 +214,132 @@ msgstr "Ethernet"
 #: instance/status_configuration_travis_example.py:103
 msgid "WLAN"
 msgstr "WLAN"
+
+#: orchard/system_status/formatters/datetime.py:19
+#, python-format
+msgid "%(datetime)s"
+msgstr "%(datetime)s Uhr"
+
+#: orchard/system_status/formatters/os.py:19
+#, python-format
+msgid "Currently, one user is logged in."
+msgid_plural "Currently, %(num)d users are logged in."
+msgstr[0] "Momentan ist ein Benutzer angemeldet."
+msgstr[1] "Momentan sind %(num)d Benutzer angemeldet."
+
+#: orchard/system_status/formatters/os.py:33
+#, python-format
+msgid "%(hash)s of %(compile_time)s"
+msgstr "%(hash)s vom %(compile_time)s Uhr"
+
+#: orchard/system_status/formatters/os.py:45
+#, python-format
+msgid "%(system)s %(version)s of %(compile_time)s"
+msgstr "%(system)s %(version)s vom %(compile_time)s Uhr"
+
+#: orchard/system_status/formatters/os.py:57
+#, python-format
+msgid "User \"%(user)s\" from %(host)s on %(date)s"
+msgstr "Benutzer \"%(user)s\" von %(host)s am %(date)s Uhr"
+
+#: orchard/templates/errors/400.html:2
+msgid "We do not understand your request&hellip;"
+msgstr "Wir verstehen Deine Anfrage nicht&hellip;"
+
+#: orchard/templates/errors/400.html:5
+msgid ""
+"The request was malformed (code 400) and could not be understood by the "
+"server."
+msgstr ""
+"Die Anfrage war fehlerhaft aufgebaut (Code 400) und konnte vom Server "
+"nicht verstanden werden."
+
+#: orchard/templates/errors/403.html:2
+msgid "We cannot let you access our secret areas&hellip;"
+msgstr "Wir können dich nicht in unsere geheimen Bereiche lassen&hellip;"
+
+#: orchard/templates/errors/403.html:5
+msgid ""
+"You do not currently have the correct permissions to view this page "
+"(code 403)."
+msgstr ""
+"Du hast im Moment nicht die benötigten Berechtigungen, um diese Seite zu "
+"öffnen (Code 403)."
+
+#: orchard/templates/errors/404.html:2
+msgid "We could not find what you were looking for&hellip;"
+msgstr "Wir konnten nicht finden, wonach Du gesucht hast&hellip;"
+
+#: orchard/templates/errors/404.html:5
+msgid ""
+"The page you requested could not be found (code 404). This might be due "
+"to a broken link, a mistyped URL, or simply our moving or deleting the "
+"requested page."
+msgstr ""
+"Die Seite, die Du angefordert hast, konnte nicht gefunden werden (Code "
+"404). Dies kann an einem defekten Link liegen, einem Tippfehler in der "
+"URL, oder einfach daran, dass wir die angeforderte Seite verschoben oder "
+"gelöscht haben."
+
+#: orchard/templates/errors/500.html:2
+msgid "We crashed the server while handling your request&hellip;"
+msgstr ""
+"Wir haben den Server abstürzen lassen, während wir Deine Anfrage "
+"bearbeiteten&hellip;"
+
+#: orchard/templates/errors/500.html:4
+msgid ""
+"The server encountered an internal error (code 500) while processing "
+"your request. Our administrators have automatically been informed of "
+"this error and will see to it as soon as possible. Please try again "
+"later."
+msgstr ""
+"Beim Bearbeiten deiner Anfrage trat ein interner Server-Fehler auf (Code "
+"500). Unsere Administratoren wurden automatisch über diesen Zwischenfall "
+"in Kenntnis gesetzt und werden sich so schnell wie möglich darum "
+"kümmern. Bitte versuche es später erneut."
+
+#: orchard/templates/errors/base.html:4
+msgid "We are so sorry about this inconvenience!"
+msgstr "Diese Unannehmlichkeit tut uns unglaublich leid!"
+
+#: orchard/templates/errors/base.html:6
+msgid "A little bit more technical:"
+msgstr "Oder etwas technischer:"
+
+#: orchard/templates/errors/base.html:9
+#, python-format
+msgid "A %(start)s might help."
+msgstr "Es könnte helfen, noch einmal %(start)s zu starten."
+
+#: orchard/templates/errors/base.html:10
+msgid "fresh start"
+msgstr "ganz von vorn"
+
+#: orchard/templates/errors/base.html:11
+msgid "Would a few raspberries make up for your sorrows?"
+msgstr "Können solange ein paar Himbeeren Deinen Kummer lindern?"
+
+#: orchard/templates/errors/base.html:16
+msgid "Raspberry"
+msgstr "Himbeere"
+
+#: orchard/templates/template_parts/footer.html:2
+#, python-format
+msgid ""
+"Orchard is published under the %(license)s. Visit the %(project_page)s "
+"on %(github)s."
+msgstr ""
+"Orchard wird unter der %(license)s veröffentlicht. Besuche die "
+"%(project_page)s auf %(github)s."
+
+#: orchard/templates/template_parts/footer.html:3
+msgid "MIT License"
+msgstr "MIT-Lizenz"
+
+#: orchard/templates/template_parts/footer.html:4
+msgid "project page"
+msgstr "Projektseite"
 
 #~ msgid "%(datetime)sh"
 #~ msgstr "%(datetime)s Uhr"

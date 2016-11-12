@@ -10,22 +10,10 @@
              start = '<a href="'|safe + url_for('system_status.OverviewView:index') + '">'|safe + _('fresh start') + '</a>'|safe) }}
         {{ _('Would a few raspberries make up for your sorrows?') }}
     </p>
-    {% import 'macros/raspberry.html' as raspberry %}
     <div id="error-page-raspberries">
     {% for i in range(0, random_int(1, 5)) %}
         <div class="error-page-raspberry">
-            <table>
-                <tr class="valign-bottom">
-                    <td class="halign-left">
-                        {{ raspberry.head() }}
-                    </td>
-                </tr>
-                <tr class="valign-top">
-                    <td class="halign-left">
-                        {{ raspberry.body() }}
-                    </td>
-                </tr>
-            </table>
+            <img src="{{ url_for('static', filename = 'images/raspberry.png') }}" width="101" height="97" alt="{{ _('Raspberry') }}" title="{{ _('Raspberry') }}" />
         </div>
     {% endfor %}
     </div>

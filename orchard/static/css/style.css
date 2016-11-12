@@ -142,10 +142,7 @@ footer {
 .error-page-raspberry {
     flex: 0 0 auto;
     margin-bottom: 1em;
-}
-
-.error-page-raspberry table {
-    margin: 0 auto;
+    text-align: center;
 }
 
 /*****************
