@@ -18,4 +18,5 @@ Content
    api
    license
 
-|projectname| is licensed under the `MIT License <http://www.opensource.org/licenses/MIT>`_.
+Copyright |copy| 2016 Bastian Meyer. |projectname| is licensed under the
+`MIT License <http://www.opensource.org/licenses/MIT>`_.

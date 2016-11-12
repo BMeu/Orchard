@@ -47,7 +47,8 @@ templates_path = ['_templates']
 
 autoclass_content = 'both'
 
-rst_prolog = '.. |projectname| replace:: {name}\n'.format(name = PROJECTNAME)
+rst_prolog = ('.. |projectname| replace:: {name}\n' +
+              '.. include:: <isonum.txt>').format(name = PROJECTNAME)
 
 # The suffix(es) of source file names.
 # You can specify multiple suffix as a list of string:
