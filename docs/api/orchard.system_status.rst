@@ -1,3 +1,5 @@
+.. _APIStatus:
+
 Package: system_status
 ======================
 

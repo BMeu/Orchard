@@ -1,3 +1,5 @@
+.. _GettingStarted:
+
 Getting Started
 ===============
 
@@ -10,15 +12,18 @@ This guide assumes you are running Raspbian. If you are using another OS, some o
 System Requirements
 -------------------
 
-* A Raspberry Pi (duh!)
+* A Raspberry Pi (duh!), running Raspbian
 * Python 3.5
 * A webserver like Apache or nginx with FCGI support
 * Optionally: Git
 
-Python 3.5 is a bit of a problem right now (October 2016) if you are using Raspbian, as it is not
+Python 3.5 is a bit of a problem right now (November 2016) if you are using Raspbian, as it is not
 yet available there. Thus, we will have to compile it ourselves.
 
 You should have a bit of experience using the terminal.
+
+|projectname| should run on any other Linux, but the default configuration of system
+information relies on Raspbian.
 
 Installing Python 3.5
 ~~~~~~~~~~~~~~~~~~~~~

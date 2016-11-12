@@ -15,6 +15,7 @@ Content
    :maxdepth: 3
 
    gettingstarted
+   userguide
    api
    license
 
