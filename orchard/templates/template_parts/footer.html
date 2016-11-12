@@ -1,5 +1,6 @@
 <footer>
-    {{ _('Orchard is published under the %(license)s. Visit the %(project_page)s on %(github)s.',
+    {{ _('Copyright &copy; 2016 %(author)s. Orchard is published under the %(license)s. Visit the %(project_page)s on %(github)s.',
+         author = '<a href="http://www.bastianmeyer.eu" target="_blank">Bastian Meyer</a>'|safe,
          license = '<a href="http://www.opensource.org/licenses/MIT" target="_blank">'|safe + _('MIT License') + '</a>'|safe,
          project_page = '<a href="https://github.com/BMeu/Orchard" target="_blank">'|safe + _('project page') + '</a>'|safe,
          github = '<a href="https://github.com" target="_blank">GitHub</a>'|safe) }}
