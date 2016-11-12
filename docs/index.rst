@@ -1,12 +1,23 @@
 |projectname|
 =============
 
-|projectname| is a web application designed for a Raspberry Pi server to monitor its status.
+|projectname| is a web application designed for Raspberry Pi servers to monitor their status.
+Have a look at it yourself:
 
-Please note that this project is as of yet still under heavy development and by no means ready
-for use. In fact, it does not currently have any useful functionality.
+.. image:: screenshot.png
 
 You are viewing the documentation for version |version| of |projectname|.
+
+Features
+--------
+
+Know what your Raspberry Pi is up to at an instance, from any device, without having to log in
+via SSH:
+
+* Display the most important system information of your Raspberry Pi in your browser
+* Fully responsive web design for any device from your smartphone to your 4K TV
+* Full English and German localizations
+* Slim pages for quick loading without stressing your Raspberry Pi
 
 Content
 -------
