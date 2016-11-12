@@ -7,7 +7,7 @@
     <div id="error-page-details">{% block message %}{% endblock %}</div>
     <p>
         {{ _('A %(start)s might help.',
-             start = '<a href="/">'|safe + _('fresh start') + '</a>'|safe) }}
+             start = '<a href="'|safe + url_for('system_status.OverviewView:index') + '">'|safe + _('fresh start') + '</a>'|safe) }}
         {{ _('Would a few raspberries make up for your sorrows?') }}
     </p>
     {% import 'macros/raspberry.html' as raspberry %}
