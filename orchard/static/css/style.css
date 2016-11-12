@@ -118,6 +118,7 @@ footer {
 
 #error-page-details {
     font-style: italic;
+    margin: 1em 0;
     padding: 0 1em;
 }
 
@@ -191,7 +192,7 @@ footer {
     }
 
     #system-status-table th, #system-status-table td {
-        padding: 0.5em;
+        padding: 0.5em 0.5em 0;
         width: auto;
     }
 
