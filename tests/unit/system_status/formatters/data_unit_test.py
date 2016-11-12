@@ -16,9 +16,12 @@ class DataUnitTest(unittest.TestCase):
         app = orchard.create_app('Testing')
         self.app_context = app.app_context()
         self.app_context.push()
+        self.request_context = app.test_request_context()
+        self.request_context.push()
         self.client = app.test_client(use_cookies = True)
 
     def tearDown(self):
+        self.request_context.pop()
         self.app_context.pop()
 
     def test_bytes_to_human_readable(self):
@@ -60,4 +63,4 @@ class DataUnitTest(unittest.TestCase):
 
         readable = formatter.bytes_to_human_readable(42 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 *
                                                      1024 * 1024 * 1024)
-        self.assertEqual(readable, '43008.0 YiB')
+        self.assertEqual(readable, '43,008.0 YiB')

@@ -4,6 +4,8 @@
     Formatter functions for data values (e.g. data volume).
 """
 
+import flask_babel
+
 
 def bytes_to_human_readable(value: float) -> str:
     """
@@ -13,10 +15,13 @@ def bytes_to_human_readable(value: float) -> str:
         :param value: The data volume in Bytes.
         :return: The value converted to the best prefix with one decimal place.
     """
-    readable = '{value:.1f} {prefix}B'
+    readable = '{value} {prefix}B'
     for prefix in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(value) < 1024.0:
-            return readable.format(value = value, prefix = prefix)
+            break
         value /= 1024
+    else:
+        prefix = 'Yi'
 
-    return readable.format(value = value, prefix = 'Yi')
+    return readable.format(value = flask_babel.format_decimal(value, format = '#,##0.0'),
+                           prefix = prefix)

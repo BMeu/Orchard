@@ -7,7 +7,7 @@
 import flask_babel
 
 from orchard.system_status import StatusGroup, StatusItem
-from orchard.system_status.formatters import data, datetime
+from orchard.system_status.formatters import data, datetime, temperature
 from orchard.system_status.formatters import os as formatter_os
 from orchard.system_status.system import cpu, memory, network, os, storage
 
@@ -51,14 +51,14 @@ group_users.append(status_last_login)
 
 # CPU.
 status_temperature = StatusItem(flask_babel.lazy_gettext('Temperature'), cpu.temperatue,
-                                formatter = '{value}°C')
+                                formatter = temperature.celsius)
 status_processes = StatusItem(flask_babel.lazy_gettext('Running Processes'), os.running_processes)
 status_load_one = StatusItem(flask_babel.lazy_gettext('1-Minute Average'), cpu.load,
-                             [cpu.LoadPeriods.one])
+                             [cpu.LoadPeriods.one], formatter = flask_babel.format_decimal)
 status_load_five = StatusItem(flask_babel.lazy_gettext('5-Minute Average'), cpu.load,
-                              [cpu.LoadPeriods.five])
+                              [cpu.LoadPeriods.five], formatter = flask_babel.format_decimal)
 status_load_fifteen = StatusItem(flask_babel.lazy_gettext('15-Minute Average'), cpu.load,
-                                 [cpu.LoadPeriods.fifteen])
+                                 [cpu.LoadPeriods.fifteen], formatter = flask_babel.format_decimal)
 group_cpu.append(status_temperature)
 group_cpu.append(status_processes)
 group_cpu.append(group_cpu_load)
