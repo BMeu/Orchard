@@ -65,7 +65,8 @@ master_doc = 'index'
 # General information about the project.
 project = PROJECTNAME
 author = 'Bastian Meyer'
-copyright = '{author} 2016'.format(author = author)
+copyright = '{author} 2016. {project} is being licensed under the MIT license' \
+    .format(author = author, project = project)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -140,8 +141,8 @@ html_theme = 'alabaster'
 # documentation.
 #
 html_theme_options = {
-    'description': ('{name} is a web application designed for a Raspberry Pi server to monitor ' +
-                    'its status.').format(name = PROJECTNAME),
+    'description': ('{name} is a web application designed for Raspberry Pi servers to monitor ' +
+                    'their status.').format(name = PROJECTNAME),
     'logo': 'logo.png',
     'github_banner': True,
     'github_user': 'BMeu',
