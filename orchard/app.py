@@ -34,6 +34,10 @@ def create_app(config: str = 'Development') -> flask.Flask:
     app.config.from_object(config)
     app.config.from_object('instance.Configuration')
 
+    # Always use English as default language during testing.
+    if app.testing:  # pragma: no branch.
+        app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+
     _configure_blueprints(app)
     _configure_context_processor(app)
     _configure_extensions(app)

@@ -14,7 +14,6 @@ class BabelUnitTest(unittest.TestCase):
 
     def setUp(self):
         self.app = orchard.create_app('Testing')
-        self.app.config['BABEL_DEFAULT_LOCALE'] = 'en'
         self.app.config['LANGUAGES'] = {
             'de': 'Deutsch',
             'en': 'English'

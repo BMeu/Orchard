@@ -13,7 +13,6 @@ class Error404UnitTest(unittest.TestCase):
 
     def setUp(self):
         app = orchard.create_app('Testing')
-        app.config['BABEL_DEFAULT_LOCALE'] = 'en'
         self.app_context = app.app_context()
         self.app_context.push()
         self.client = app.test_client(use_cookies = True)
