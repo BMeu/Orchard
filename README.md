@@ -7,13 +7,31 @@
 [![Upcoming Issues](https://badge.waffle.io/BMeu/Orchard.svg?label=upcoming&title=Upcoming%20Issues)](http://waffle.io/BMeu/Orchard)
 [![Issues in Progress](https://badge.waffle.io/BMeu/Orchard.svg?label=in%20progress&title=Issues%20in%20Progress)](http://waffle.io/BMeu/Orchard)
 
-Orchard is a web application designed for a Raspberry Pi server to monitor its status.
+![Orchard](docs/_static/logo.png "Orchard")
 
-Please note that this project is as of yet still under heavy development and by no means ready 
-for use. In fact, it does not currently have any useful functionality.
+Orchard is a web application designed for Raspberry Pi servers to monitor their status.
+Have a look at it yourself:
+ 
+![Screenshot of Orchard](docs/screenshot.png "Screenshot of the homepage of Orchard")
+
+## Features
+
+Know what your Raspberry Pi is up to at an instance, from any device, without having to log in
+via SSH:
+
+* Display the most important system information of your Raspberry Pi in your browser
+* Fully responsive web design for any device from your smartphone to your 4K TV
+* Full English and German localizations
+* Slim pages for quick loading without stressing your Raspberry Pi
+
+## Getting Started
+Please refer to the
+["Getting Started" section in the documentaiton](https://orchard.readthedocs.io/en/master/gettingstarted.html)
+for instructions on how to install Orchard on your Raspberry Pi.
 
 ## Documentation
 The full documentation is available at [Read the Docs](https://orchard.readthedocs.io).
 
 ## License
-Orchard is licensed under the [MIT License](http://www.opensource.org/licenses/MIT).
+Copyright &copy; 2016 [Bastian Meyer](http://www.bastianmeyer.eu). Orchard is licensed under the
+[MIT License](http://www.opensource.org/licenses/MIT).
