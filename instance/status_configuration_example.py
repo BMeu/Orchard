@@ -115,3 +115,10 @@ group_network_internal_ip.append(status_ip_eth0)
 group_network_internal_ip.append(status_ip_wlan0)
 
 Statuses = [group_os, group_users, group_cpu, group_storage, group_memory, group_network]
+"""
+    A list of :class:`orchard.system_status.status_group.StatusGroup` instances, each configured
+    with sub-groups and/or :class:`orchard.system_status.status_item.StatusItem` instances,
+    that will be displayed on the home page.
+
+    :type: List[StatusGroup]
+"""

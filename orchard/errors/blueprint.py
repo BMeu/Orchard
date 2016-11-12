@@ -7,3 +7,8 @@
 import flask
 
 blueprint = flask.Blueprint('errors', __name__)
+"""
+    The blueprint instance.
+
+    :type: flask.Blueprint
+"""

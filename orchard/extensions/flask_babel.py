@@ -8,6 +8,11 @@ import flask
 import flask_babel
 
 babel = flask_babel.Babel()
+"""
+    The Babel extension.
+
+    :type: flask_babel.Babel
+"""
 
 
 @babel.localeselector

@@ -23,7 +23,7 @@ class Error500View(flask_classful.FlaskView):
     def index(self) -> str:
         """
             Display the error page for internal errors and send a mail to all administrators
-            information them of this error.
+            informing them of this error.
 
             :return: A page explaining the error.
         """

@@ -11,3 +11,12 @@ Full import path: ``orchard``
 .. toctree::
 
     orchard.configuration
+    orchard.errors
+    orchard.extensions
+    orchard.system_status
+
+Module: app
+-----------
+
+.. automodule:: orchard.app
+    :members:

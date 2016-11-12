@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-    This module provides the ``StatusGroup`` class collecting multiple :cls:`StatusItem`s.
+    This module provides the ``StatusGroup`` class collecting multiple :class:`.StatusItem`
+    instances.
 """
 
 from typing import Iterator, Union
@@ -11,7 +12,9 @@ from orchard.system_status import StatusItem
 
 class StatusGroup:
     """
-        A StatusGroup collects multiple :cls:`StatusItem`s under a specific header.
+        A StatusGroup collects multiple :class:`.StatusItem` instances under a specific header.
+
+        This class is iterable, and will return its items and sub-groups when interating over it.
     """
 
     def __init__(self, label: str):
@@ -54,7 +57,7 @@ class StatusGroup:
 
     def __iter__(self) -> Iterator:
         """
-            Get an iterator over all added :cls:`StatusItem` objects, in the order they have been
+            Get an iterator over all added :class:`StatusItem` objects, in the order they have been
             added.
 
             :return: An iterator over all status items.

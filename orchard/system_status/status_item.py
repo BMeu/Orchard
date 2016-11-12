@@ -9,10 +9,10 @@ from typing import Any, Callable, Dict, List, Union
 
 class StatusItem:
     """
-        A status item collects information on
+        A status item provides a common interface to access and format system status information.
     """
 
-    def __init__(self, label: str, value_function: Callable,
+    def __init__(self, label: str, value_function: Callable[[Any], Any],
                  function_args: Union[Dict[str, Any], List[Any]] = None,
                  formatter: Union[str, Callable[[Any], str]] = None):
         """
