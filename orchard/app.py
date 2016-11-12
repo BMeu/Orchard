@@ -151,6 +151,7 @@ def _configure_request_handlers(app: flask.Flask):
             Set up a few things before handling the actual request.
         """
         flask.g.locale = flask_babel.get_locale()
+        flask.g.project_name = app.config['PROJECT_NAME']
 
         # Set a default title.
         flask.g.title = app.config['PROJECT_NAME']

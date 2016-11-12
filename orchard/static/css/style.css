@@ -53,28 +53,20 @@ pre {
  **********/
 
 header {
-    flex: 0 0 auto;
     color: #ffffff;
+    flex: 0 0 auto;
     font-weight: bold;
+    text-align: center;
 }
 
 header a {
     text-decoration: none;
 }
 
-#raspberry-logo {
-    margin: 0 auto;
-}
-
-#raspberry-logo pre {
-    font-size: 1vw;
-    text-align: left;
-}
-
-@media screen and (min-width: 50em) {
-  #raspberry-logo pre {
-    font-size: 1em;
-  }
+header img {
+    height: auto;
+    margin: 0.1em;
+    max-width: 100%;
 }
 
 /***********

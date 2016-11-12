@@ -1,26 +1,6 @@
 <header>
     {% import 'macros/raspberry.html' as raspberry %}
     <a href="/">
-        <table id="raspberry-logo">
-            <tr class="valign-bottom">
-                <td class="halign-right">
-                    {{ raspberry.head() }}
-                </td>
-                <td></td>
-            </tr>
-            <tr class="valign-top">
-                <td class="halign-right">
-                    {{ raspberry.body() }}
-                </td>
-                <td class="halign-left">
-                    <pre>
-                   _                          _
-   ___ ___ ___ ___| |_ ___ ___ ___ _ _    ___|_|
-  |  _| .'|_ -| . | . | -_|  _|  _| | |  | . | |
-  |_| |__,|___|  _|___|___|_| |_| |_  |  |  _|_|
-              |_|                 |___|  |_|</pre>
-                </td>
-            </tr>
-        </table>
+        <img src="{{ url_for('static', filename = 'images/logo-white.png') }}" width="300" height="100" alt="{{ g.project_name }}" title="{{ g.project_name }}"/>
     </a>
 </header>
