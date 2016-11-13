@@ -30,7 +30,8 @@ VERSION = '0.1.0'
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
 if on_rtd:
     from shutil import copyfile
-    print(os.path.abspath(os.path.dirname(__file__)))
+    copyfile('../instance/configuration_example.py', '../instance/configuration.py')
+    copyfile('../instance/status_configuration_example.py', '../instance/status_configuration.py')
 
 # -- General configuration ------------------------------------------------
 
