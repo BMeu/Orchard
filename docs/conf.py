@@ -26,6 +26,12 @@ sys.path.insert(0, os.path.abspath('..'))
 PROJECTNAME = 'Orchard'
 VERSION = '0.1.0'
 
+# Create the instance configuration files on ReadTheDocs.
+on_rtd = os.environ.get('READTHEDOCS') == 'True'
+if on_rtd:
+    from shutil import copyfile
+    print(os.path.abspath(os.path.dirname(__file__)))
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
