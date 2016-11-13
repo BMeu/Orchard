@@ -162,7 +162,7 @@ can use to access the application.
 
 This guide assumes you have been following the steps above and your webserver is already installed
 (if this is not the case, use one of the many tutorials out there in the Internet). If you are not
-currently within the installation direcotry, change into it.
+currently within the installation directory, change into it.
 
 .. code-block:: bash
 
@@ -258,7 +258,7 @@ You should now be able to access |projectname| under the address of your Raspber
 ``/orchard`` in your browser. This finishes the installation!
 
 What if you want |projectname| to be your home page (i.e. have it available under ``/``)? This is a
-little bit more tricky. Simply setting the ``ScriptAlias`` line in step 3b to
+little bit more tricky. Simply setting the ``ScriptAlias`` line in step 4b to
 ``ScriptAlias / /opt/orchard.run.fcgi/`` would result in all of your other URLs being consumed by
 |projectname| and thus not working as expected anymore. What we want is |projectname| to be
 called if the requested URL does not exist on the server---that's exactly what the
@@ -273,7 +273,7 @@ First, enable the rewrite module (if needed):
     $ sudo a2enmod rewrite
 
 Now paste the following lines into the Apache configuration file after the lines you have added
-in step 3:
+in step 4:
 
 .. code-block:: apache
 
