@@ -26,7 +26,7 @@ via SSH:
 
 ## Getting Started
 Please refer to the
-["Getting Started" section in the documentaiton](https://orchard.readthedocs.io/en/master/gettingstarted.html)
+["Getting Started" section in the documentation](https://orchard.readthedocs.io/en/master/gettingstarted.html)
 for instructions on how to install Orchard on your Raspberry Pi.
 
 ## Documentation
