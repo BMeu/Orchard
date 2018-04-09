@@ -11,7 +11,7 @@ Flask-Classful==0.13.1
 flup6==1.1.1
 hypothesis==3.5.3
 imagesize==1.0.0
-ipgetter==0.6
+ipgetter==0.7
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==0.23
