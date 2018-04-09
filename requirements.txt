@@ -1,5 +1,5 @@
 alabaster==0.7.10
-Babel==2.3.4
+Babel==2.5.3
 click==6.7
 coverage==4.5.1
 docutils==0.12
