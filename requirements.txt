@@ -15,7 +15,7 @@ ipgetter==0.6
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==0.23
-mccabe==0.5.2
+mccabe==0.6.1
 mock==2.0.0
 pbr==4.0.1
 psutil==5.0.0
