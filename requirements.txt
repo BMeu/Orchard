@@ -6,7 +6,7 @@ docutils==0.14
 flake8==3.0.4
 Flask==0.12.2
 Flask-Babel==0.11.2
-Flask-Caching==1.3.3
+Flask-Caching==1.4.0
 Flask-Classful==0.14.1
 flup6==1.1.1
 hypothesis==3.55.6
