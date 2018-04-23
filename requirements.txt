@@ -26,7 +26,7 @@ pytz==2018.4
 six==1.11.0
 snowballstemmer==1.2.1
 spark-parser==1.8.6
-Sphinx==1.7.2
+Sphinx==1.7.3
 uncompyle6==2.8.3
 Werkzeug==0.14.1
 xdis==3.8.1
