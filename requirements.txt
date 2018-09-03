@@ -10,7 +10,7 @@ Flask-Caching==1.4.0
 Flask-Classful==0.14.1
 flup6==1.1.1
 hypothesis==3.69.12
-imagesize==1.0.0
+imagesize==1.1.0
 ipgetter==0.7
 itsdangerous==0.24
 Jinja2==2.10
