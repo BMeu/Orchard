@@ -9,7 +9,7 @@ Flask-Babel==0.11.2
 Flask-Caching==1.4.0
 Flask-Classful==0.14.1
 flup6==1.1.1
-hypothesis==3.71.10
+hypothesis==3.73.0
 imagesize==1.1.0
 ipgetter==0.7
 itsdangerous==0.24
