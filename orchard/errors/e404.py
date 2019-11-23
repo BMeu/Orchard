@@ -25,4 +25,5 @@ class Error404View(flask_classful.FlaskView):
         """
         return flask.render_template('errors/404.html')
 
+
 Error404View.register(blueprint)

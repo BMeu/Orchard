@@ -232,7 +232,7 @@ def lint():
 
     print('RUNNING LINTER.\n')
 
-    linter = subprocess.call(['flake8', '--ignore=E251', '--max-line-length=100',
+    linter = subprocess.call(['flake8', '--ignore=E251,W504', '--max-line-length=100',
                               '--count', 'orchard.py', 'orchard/', 'tests/'])
 
     if linter:

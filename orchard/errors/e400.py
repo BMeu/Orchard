@@ -25,4 +25,5 @@ class Error400View(flask_classful.FlaskView):
         """
         return flask.render_template('errors/400.html')
 
+
 Error400View.register(blueprint)

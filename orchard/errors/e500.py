@@ -44,4 +44,5 @@ class Error500View(flask_classful.FlaskView):
 
         return flask.render_template('errors/500.html')
 
+
 Error500View.register(blueprint)

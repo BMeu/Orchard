@@ -70,12 +70,13 @@ class NetworkUnitTest(unittest.TestCase):
 
     @mock.patch('orchard.system_status.system.network.ipgetter2.IPGetter.get')
     def test_external_ip_address_v6(self, mock_ipgetter):
+        ipv6 = '2001:0db8:85a3:0000:0000:8a2e:0370:7334'
         Address = collections.namedtuple('Address', 'v4 v6')
-        mock_ipgetter.return_value = Address('3.141.59.26', '2001:0db8:85a3:0000:0000:8a2e:0370:7334')
+        mock_ipgetter.return_value = Address('3.141.59.26', ipv6)
 
         ip = network.external_ip_address()
         self.assertTrue(mock_ipgetter.called)
-        self.assertEqual(ip, '2001:0db8:85a3:0000:0000:8a2e:0370:7334')
+        self.assertEqual(ip, ipv6)
 
     @mock.patch('orchard.system_status.system.network.ip_addresses')
     def test_ip_address(self, mock_ip_addresses):

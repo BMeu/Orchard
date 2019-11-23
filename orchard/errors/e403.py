@@ -25,4 +25,5 @@ class Error403View(flask_classful.FlaskView):
         """
         return flask.render_template('errors/403.html')
 
+
 Error403View.register(blueprint)

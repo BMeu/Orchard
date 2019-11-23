@@ -28,4 +28,5 @@ class OverviewView(flask_classful.FlaskView):
         return flask.render_template('system_status/overview.html',
                                      statuses = instance.status_configuration.Statuses)
 
+
 OverviewView.register(blueprint)
