@@ -4,6 +4,7 @@
     Unit Test: orchard.system_status.system.network
 """
 
+import collections
 import socket
 import unittest
 
@@ -58,13 +59,23 @@ class NetworkUnitTest(unittest.TestCase):
         self.assertTrue(mock_socket.gethostname.called)
         self.assertEqual(hostname, 'TestSystem')
 
-    @mock.patch('orchard.system_status.system.network.ipgetter')
-    def test_external_ip_address(self, mock_ipgetter):
-        mock_ipgetter.myip.return_value = '3.141.59.26'
+    @mock.patch('orchard.system_status.system.network.ipgetter2.IPGetter.get')
+    def test_external_ip_address_v4(self, mock_ipgetter):
+        Address = collections.namedtuple('Address', 'v4 v6')
+        mock_ipgetter.return_value = Address('3.141.59.26', '::')
 
         ip = network.external_ip_address()
-        self.assertTrue(mock_ipgetter.myip.called)
+        self.assertTrue(mock_ipgetter.called)
         self.assertEqual(ip, '3.141.59.26')
+
+    @mock.patch('orchard.system_status.system.network.ipgetter2.IPGetter.get')
+    def test_external_ip_address_v6(self, mock_ipgetter):
+        Address = collections.namedtuple('Address', 'v4 v6')
+        mock_ipgetter.return_value = Address('3.141.59.26', '2001:0db8:85a3:0000:0000:8a2e:0370:7334')
+
+        ip = network.external_ip_address()
+        self.assertTrue(mock_ipgetter.called)
+        self.assertEqual(ip, '2001:0db8:85a3:0000:0000:8a2e:0370:7334')
 
     @mock.patch('orchard.system_status.system.network.ip_addresses')
     def test_ip_address(self, mock_ip_addresses):

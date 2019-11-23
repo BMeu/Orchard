@@ -8,7 +8,7 @@ import enum
 from typing import Dict
 import socket
 
-import ipgetter
+import ipgetter2
 import psutil
 
 import orchard.extensions
@@ -39,7 +39,9 @@ def external_ip_address() -> str:
 
         :return: The IP address
     """
-    return ipgetter.myip()
+    ipgetter = ipgetter2.IPGetter()
+    addresses = ipgetter.get()
+    return str(addresses.v6) if str(addresses.v6) != '::' else str(addresses.v4)
 
 
 def ip_address(interface: str, ip_version: IPVersion) -> str:
