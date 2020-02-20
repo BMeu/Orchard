@@ -11,7 +11,7 @@ flake8==3.7.9
 Flask==0.12.2
 Flask-Babel==0.11.2
 Flask-Caching==1.8.0
-Flask-Classful==0.14.1
+Flask-Classful==0.14.2
 flup6==1.1.1
 hypothesis==3.74.2
 idna==2.8
