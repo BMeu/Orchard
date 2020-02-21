@@ -16,7 +16,7 @@ flup6==1.1.1
 hypothesis==3.74.2
 idna==2.8
 imagesize==1.1.0
-ipgetter2==1.1.9
+ipgetter2==1.1.10
 itsdangerous==0.24
 Jinja2==2.10.1
 MarkupSafe==1.0
