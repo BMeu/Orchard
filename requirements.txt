@@ -38,5 +38,5 @@ Sphinx==1.8.1
 sphinxcontrib-websupport==1.1.2
 uncompyle6==3.5.1
 urllib3==1.25.7
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 xdis==4.2.2
