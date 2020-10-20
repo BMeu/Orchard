@@ -23,7 +23,7 @@ MarkupSafe==1.0
 mccabe==0.6.1
 mock==2.0.0
 packaging==19.2
-pbr==4.1.1
+pbr==5.5.1
 psutil==5.7.0
 pycodestyle==2.5.0
 pyflakes==2.1.1
